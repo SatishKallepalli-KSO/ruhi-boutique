@@ -5568,3 +5568,213 @@ button.data-card.active,
     animation: none;
   }
 }
+
+
+/* —— Premium mobile polish —— */
+@media (max-width: 720px) {
+  .topbar {
+    gap: 0.45rem;
+    padding: 0.55rem 1rem;
+  }
+
+  .topbar-banner {
+    width: 100%;
+  }
+
+  .topbar-open {
+    flex-wrap: wrap;
+  }
+
+  .nav {
+    padding: 0.7rem 1rem;
+  }
+
+  .nav-mark {
+    width: 3.15rem;
+    height: 3.15rem;
+  }
+
+  .nav-brand-text strong,
+  .nav-brand strong {
+    font-size: 1.15rem;
+    letter-spacing: 0.04em;
+  }
+
+  .nav-brand-text small,
+  .nav-brand small {
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+  }
+
+  .hero-scenic.hero-luxe {
+    min-height: min(78vh, 640px);
+    padding: 3.5rem 1.15rem 3rem;
+    align-items: end;
+  }
+
+  .hero-luxe-shade {
+    background:
+      linear-gradient(180deg, rgba(18, 12, 6, 0.18) 0%, rgba(18, 12, 6, 0.22) 40%, rgba(18, 12, 6, 0.72) 100%),
+      linear-gradient(105deg, rgba(18, 12, 6, 0.55) 0%, rgba(18, 12, 6, 0.2) 55%, rgba(18, 12, 6, 0.08) 100%) !important;
+  }
+
+  .hero-luxe-copy {
+    max-width: 100%;
+    padding-block: 0;
+  }
+
+  .hero-luxe .hero-name {
+    font-size: clamp(2.35rem, 11vw, 3.2rem);
+    letter-spacing: 0.03em;
+  }
+
+  .hero-store {
+    font-size: 1.05rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .hero-luxe .hero-tagline {
+    font-size: 1rem;
+    max-width: 28rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .hero-actions {
+    width: 100%;
+    display: grid;
+    gap: 0.65rem;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    min-height: 3rem;
+    justify-content: center;
+  }
+
+  .section {
+    padding-inline: 1.15rem;
+  }
+
+  .section-luxe-head,
+  .motif-signature-copy,
+  .collections-luxe-hero {
+    max-width: 100%;
+  }
+
+  .motif-signature-layout {
+    gap: 1.25rem;
+    padding-inline: 1.15rem;
+  }
+
+  .motif-signature-media,
+  .motif-signature-media img {
+    min-height: 240px;
+  }
+
+  .motif-signature-copy h2 {
+    font-size: clamp(1.85rem, 8vw, 2.4rem);
+  }
+
+  .offer-tile,
+  .offer-tile-1,
+  .offer-tile-2,
+  .offer-tile-3,
+  .offer-tile:nth-child(n) {
+    min-height: 300px;
+  }
+
+  .begin-panels {
+    gap: 0.75rem;
+  }
+
+  .begin-panel {
+    min-height: auto;
+  }
+
+  .services-atelier-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .service-atelier-card {
+    padding: 1.1rem 1rem;
+  }
+
+  .bridal-timeline {
+    padding-inline: 0;
+  }
+
+  .bridal-timeline-layout {
+    padding-inline: 1.15rem;
+  }
+
+  .faq-q {
+    padding: 0.95rem 1rem;
+    font-size: 0.95rem;
+  }
+
+  .quotes-luxe-rail {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .final-luxe-copy {
+    padding: 2rem 1.15rem;
+  }
+
+  .final-luxe-copy h2 {
+    font-size: clamp(1.9rem, 8vw, 2.5rem);
+  }
+
+  .mobile-dock {
+    background: rgba(10, 10, 10, 0.94);
+    border-top: 1px solid rgba(196, 163, 90, 0.28);
+    box-shadow: 0 -12px 32px rgba(0, 0, 0, 0.28);
+    backdrop-filter: blur(16px);
+  }
+
+  .mobile-dock-item {
+    background: transparent;
+    color: rgba(247, 244, 239, 0.88);
+    border: 1px solid rgba(247, 244, 239, 0.16);
+    border-radius: 0;
+    font-size: 0.72rem;
+    font-weight: 650;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .mobile-dock-primary {
+    background: var(--accent);
+    color: #0a0a0a;
+    border-color: var(--accent);
+  }
+
+  .footer {
+    padding-bottom: 5.25rem;
+  }
+
+  .form-portal-hero img {
+    height: 200px;
+  }
+
+  .about-store-card {
+    max-width: 100%;
+  }
+
+  .about-store-card img {
+    height: 160px;
+  }
+}
+
+@media (max-width: 390px) {
+  .hero-scenic.hero-luxe {
+    min-height: min(72vh, 560px);
+    padding: 3rem 1rem 2.5rem;
+  }
+
+  .nav-brand-text strong,
+  .nav-brand strong {
+    font-size: 1.02rem;
+  }
+}

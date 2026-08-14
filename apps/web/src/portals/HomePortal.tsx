@@ -55,10 +55,7 @@ export function HomePortal({ lang, tx, stats, setPortal }: Props) {
         </div>
         <div className="hero-scenic-shade hero-luxe-shade" aria-hidden="true" />
         <div className="hero-film" aria-hidden="true" />
-        <ElephantMotif className="hero-elephant hero-elephant-left" />
-        <ElephantMotif className="hero-elephant hero-elephant-right" />
         <div className="hero-copy hero-copy-on-media hero-luxe-copy">
-          <img className="hero-logo" src="/logo.png" alt="" width={128} height={128} />
           <p className="hero-eyebrow">{tx('heroKicker')}</p>
           <h1 className="hero-name">{tx('heroBrand')}</h1>
           <p className="hero-store">{business.boutiqueName}</p>
@@ -78,7 +75,6 @@ export function HomePortal({ lang, tx, stats, setPortal }: Props) {
         <div className="motif-signature-layout">
           <div className="motif-signature-media">
             <img src="/hero-atelier-light.jpg" alt="" loading="lazy" decoding="async" />
-            <ElephantMotif className="motif-signature-icon" title="Ruhi elephant mark" />
           </div>
           <div className="motif-signature-copy">
             <p className="section-eyebrow">{tx('motifEyebrow')}</p>

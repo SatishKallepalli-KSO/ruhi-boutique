@@ -57,7 +57,11 @@ export function HomePortal({ lang, tx, stats, setPortal }: Props) {
         <div className="hero-scenic-shade hero-luxe-shade" aria-hidden="true" />
         <div className="hero-film" aria-hidden="true" />
         <p className="hero-shloka" lang="sa">
-          {tx('heroShloka')}
+          {tx('heroShloka')
+            .split('\n')
+            .map((line) => (
+              <span key={line}>{line}</span>
+            ))}
         </p>
         <div className="hero-copy hero-copy-on-media hero-luxe-copy">
           <p className="hero-eyebrow">{tx('heroKicker')}</p>

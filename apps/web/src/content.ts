@@ -417,8 +417,8 @@ const dict = {
     motifTitle: 'Elephant & silk',
     motifBody:
       'The elephant is our house mark — auspicious, graceful, and rooted in tradition. Draped with saree silk, it becomes the quiet symbol of Ruhi Trends: craft, celebration, and care.',
-    heroShloka: 'ॐ गं गणपतये नमः',
-    heroShlokaMeaning: 'Salutations to Lord Ganesha — for a calm and auspicious beginning.',
+    heroShloka: 'वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।\nनिर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥',
+    heroShlokaMeaning: 'O Lord with the curved trunk — remove every obstacle from our work, always.',
     ambiencePlay: 'Calm ambience',
     ambiencePause: 'Pause ambience',
   },
@@ -670,8 +670,8 @@ const dict = {
     motifTitle: 'ఏనుగు & సిల్క్',
     motifBody:
       'ఏనుగు మా హౌస్ మార్క్ — శుభం, సొగసు, సంప్రదాయం. చీర సిల్క్‌తో కలిసి అది రూహీ ట్రెండ్స్ చిహ్నం: క్రాఫ్ట్, వేడుక, జాగ్రత్త.',
-    heroShloka: 'ॐ गं गणपतये नमः',
-    heroShlokaMeaning: 'శ్రీ గణేశునికి నమస్కారం — ప్రశాంత, శుభారంభం.',
+    heroShloka: 'वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।\nनिर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥',
+    heroShlokaMeaning: 'వక్రతుండ మహాకాయ — అన్ని కార్యాల్లో విఘ్నాలు తొలగించు.',
     ambiencePlay: 'ప్రశాంత సంగీతం',
     ambiencePause: 'సంగీతం ఆపు',
   },

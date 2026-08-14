@@ -5797,20 +5797,27 @@ button.data-card.active,
 .hero-shloka {
   position: absolute;
   z-index: 3;
-  top: 46%;
+  top: 44%;
   left: 58%;
   transform: translate(-50%, -50%);
   margin: 0;
-  max-width: min(42vw, 18rem);
+  max-width: min(46vw, 20rem);
+  display: grid;
+  gap: 0.28rem;
   text-align: center;
   font-family: var(--font-display);
-  font-size: clamp(0.58rem, 1.1vw, 0.72rem);
+  font-size: clamp(0.52rem, 0.95vw, 0.68rem);
   font-weight: 500;
-  letter-spacing: 0.22em;
-  line-height: 1.55;
-  color: rgba(255, 248, 230, 0.72);
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+  letter-spacing: 0.12em;
+  line-height: 1.45;
+  color: rgba(255, 248, 230, 0.7);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
   pointer-events: none;
+  white-space: pre-line;
+}
+
+.hero-shloka span {
+  display: block;
 }
 
 .hero-wide .hero-luxe-copy {
@@ -5869,13 +5876,11 @@ button.data-card.active,
   }
 
   .hero-shloka {
-    top: 1rem;
-    font-size: 0.98rem;
-    letter-spacing: 0.1em;
-  }
-
-  .hero-shloka-meaning {
-    font-size: 0.86rem;
+    top: 42%;
+    left: 55%;
+    max-width: 48vw;
+    font-size: 0.55rem;
+    letter-spacing: 0.16em;
   }
 
   .calm-ambience {

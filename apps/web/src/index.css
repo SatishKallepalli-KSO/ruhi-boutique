@@ -5797,28 +5797,20 @@ button.data-card.active,
 .hero-shloka {
   position: absolute;
   z-index: 3;
-  top: clamp(1.25rem, 4vh, 2.5rem);
-  left: 50%;
-  transform: translateX(-50%);
+  top: 46%;
+  left: 58%;
+  transform: translate(-50%, -50%);
   margin: 0;
-  max-width: min(92vw, 36rem);
+  max-width: min(42vw, 18rem);
   text-align: center;
   font-family: var(--font-display);
-  font-size: clamp(1.05rem, 2.4vw, 1.45rem);
+  font-size: clamp(0.58rem, 1.1vw, 0.72rem);
   font-weight: 500;
-  letter-spacing: 0.14em;
-  color: rgba(255, 248, 230, 0.92);
-  text-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+  letter-spacing: 0.22em;
+  line-height: 1.55;
+  color: rgba(255, 248, 230, 0.72);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
   pointer-events: none;
-}
-
-.hero-shloka-meaning {
-  margin: 0 0 0.85rem;
-  max-width: 28rem;
-  font-size: 0.92rem;
-  line-height: 1.45;
-  color: rgba(255, 245, 220, 0.82);
-  font-style: italic;
 }
 
 .hero-wide .hero-luxe-copy {

@@ -63,7 +63,6 @@ export function HomePortal({ lang, tx, stats, setPortal }: Props) {
           <p className="hero-eyebrow">{tx('heroKicker')}</p>
           <h1 className="hero-name">{tx('heroBrand')}</h1>
           <p className="hero-store">{business.boutiqueName}</p>
-          <p className="hero-shloka-meaning">{tx('heroShlokaMeaning')}</p>
           <p className="hero-tagline">{tx('heroTagline')}</p>
           <div className="hero-actions">
             <button type="button" className="btn btn-gold" onClick={() => setPortal('book')}>

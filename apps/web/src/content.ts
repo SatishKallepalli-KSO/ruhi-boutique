@@ -73,7 +73,6 @@ export const collections = [
 ] as const
 
 export const gallery = [
-  { src: '/storefront.jpg', en: 'Boutique storefront', te: 'బూటిక్ స్టోర్‌ఫ్రంట్' },
   { src: '/gallery-saree.jpg', en: 'Saree floor', te: 'చీరల ఫ్లోర్' },
   { src: '/gallery-bridal.jpg', en: 'Bridal looks', te: 'బ్రైడల్ లుక్‌లు' },
   { src: '/gallery-stitch.jpg', en: 'Custom stitch desk', te: 'కస్టమ్ స్టిచ్ డెస్క్' },

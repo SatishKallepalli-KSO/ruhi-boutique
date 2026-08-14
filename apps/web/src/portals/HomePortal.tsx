@@ -51,7 +51,7 @@ export function HomePortal({ lang, tx, stats, setPortal }: Props) {
     <>
       <section className="hero hero-scenic hero-luxe" aria-label="Ruhi Trends">
         <div className="hero-scenic-bg hero-kenburns" aria-hidden="true">
-          <img src="/storefront.jpg" alt="" fetchPriority="high" decoding="async" />
+          <img src="/hero-premium.jpg" alt="" fetchPriority="high" decoding="async" />
         </div>
         <div className="hero-scenic-shade hero-luxe-shade" aria-hidden="true" />
         <div className="hero-film" aria-hidden="true" />

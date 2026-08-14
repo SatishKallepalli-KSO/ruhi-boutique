@@ -11,14 +11,20 @@ type Props = {
 export function AboutPortal({ lang, tx }: Props) {
   return (
     <section className="portal about-page about-luxe">
-      <div className="about-storefront">
-        <img src="/storefront.jpg" alt={business.boutiqueName} loading="eager" />
-        <div className="about-storefront-copy">
-          <img className="about-seal" src="/logo.png" alt="Ruhi Trends" />
+      <div className="section-head about-head about-head-luxe">
+        <div>
+          <p className="section-eyebrow">{tx('navAbout')}</p>
           <h2>{tx('aboutTitle')}</h2>
           <p>{tx('aboutIntro')}</p>
           <OpenBadge tx={tx} />
         </div>
+        <figure className="about-store-card">
+          <img src="/storefront.jpg" alt={business.boutiqueName} loading="eager" />
+          <figcaption>
+            {business.boutiqueName}
+            <span>{address.landmark}</span>
+          </figcaption>
+        </figure>
       </div>
       <div className="about-layout">
         <div className="about-copy">

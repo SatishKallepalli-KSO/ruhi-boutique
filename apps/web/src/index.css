@@ -167,13 +167,41 @@ a:hover {
 }
 
 .nav-mark {
-  width: 3rem;
-  height: 3rem;
+  width: 3.75rem;
+  height: 3.75rem;
   flex-shrink: 0;
   display: block;
   border-radius: 50%;
   object-fit: cover;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 0 0 1px rgba(196, 163, 90, 0.35), 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+.nav-brand-text {
+  display: grid;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.nav-brand-text strong,
+.nav-brand strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  line-height: 1.05;
+  text-transform: none;
+  color: #fff;
+}
+
+.nav-brand-text small,
+.nav-brand small {
+  display: block;
+  color: rgba(247, 244, 239, 0.7);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 .nav-links {
@@ -2698,11 +2726,12 @@ button.data-card.active,
 }
 
 .footer-mark {
-  width: 3.1rem;
-  height: 3.1rem;
+  width: 3.75rem;
+  height: 3.75rem;
   flex-shrink: 0;
   border-radius: 50%;
   object-fit: cover;
+  box-shadow: 0 0 0 1px rgba(196, 163, 90, 0.35);
 }
 
 .footer-brand strong {
@@ -3404,13 +3433,26 @@ button.data-card.active,
 }
 
 .hero-logo {
-  width: 4.75rem;
-  height: 4.75rem;
+  width: 6.5rem;
+  height: 6.5rem;
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 1.1rem;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  box-shadow:
+    0 0 0 2px rgba(196, 163, 90, 0.45),
+    0 16px 44px rgba(0, 0, 0, 0.4);
   animation: fade-up 0.8s ease both;
+}
+
+.hero-luxe .hero-name {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 7vw, 4.8rem);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 0.98;
+  margin: 0 0 1rem;
+  color: #fff;
+  text-shadow: 0 8px 36px rgba(0, 0, 0, 0.4);
 }
 
 .hero-premium .hero-name {

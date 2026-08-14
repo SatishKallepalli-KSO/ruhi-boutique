@@ -375,7 +375,11 @@ export default function App() {
             goPortal('home')
           }}
         >
-          <BrandMark variant="lockup" />
+          <BrandMark className="nav-mark" />
+          <span className="nav-brand-text">
+            <strong>Ruhi Trends</strong>
+            <small>ruhitrends.com</small>
+          </span>
         </a>
         <nav className="nav-links" id="primary-nav-links" aria-label="Primary">
           <button type="button" className={portal === 'home' ? 'active' : ''} onClick={() => goPortal('home')}>
@@ -547,7 +551,10 @@ export default function App() {
       <footer className="footer">
         <div className="footer-inner">
           <div className="footer-brand">
-            <BrandMark variant="lockup" inverted className="footer-brand-lockup" />
+            <div className="footer-brand-row">
+              <BrandMark className="footer-mark" />
+              <strong>Ruhi Trends</strong>
+            </div>
             <p>{business.boutiqueName}</p>
             <p>
               <PhoneLinks />

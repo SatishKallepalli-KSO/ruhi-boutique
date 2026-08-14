@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { BrandMark } from '../components/BrandMark'
 import type { Stats } from '../api'
 import { OpenBadge } from '../components/OpenBadge'
 import { Reveal } from '../components/Reveal'
@@ -57,9 +56,9 @@ export function HomePortal({ lang, tx, stats, setPortal }: Props) {
         <div className="hero-scenic-shade hero-luxe-shade" aria-hidden="true" />
         <div className="hero-film" aria-hidden="true" />
         <div className="hero-copy hero-copy-on-media hero-luxe-copy">
-          <BrandMark variant="hero" inverted className="hero-brand-lockup" />
+          <img className="hero-logo" src="/logo.png" alt="" width={128} height={128} />
           <p className="hero-eyebrow">{tx('heroKicker')}</p>
-          <h1 className="hero-name sr-only">{tx('heroBrand')}</h1>
+          <h1 className="hero-name">{tx('heroBrand')}</h1>
           <p className="hero-tagline">{tx('heroTagline')}</p>
           <div className="hero-actions">
             <button type="button" className="btn btn-gold" onClick={() => setPortal('book')}>
@@ -175,7 +174,7 @@ export function HomePortal({ lang, tx, stats, setPortal }: Props) {
             </button>
             <a className="begin-panel" href={`tel:${business.phone}`}>
               <span className="begin-panel-media begin-panel-media-dark">
-                <img src="/logo-monogram.png" alt="" loading="lazy" />
+                <img src="/logo.png" alt="" loading="lazy" />
               </span>
               <span className="begin-panel-body">
                 <strong>{tx('roleOfficeTitle')}</strong>

@@ -5,81 +5,46 @@ type Props = {
   tx: (key: DictKey) => string
 }
 
-/**
- * Optional calm ambience — user starts it (no autoplay).
- * Soft original temple-bell tones via Web Audio (not a copyrighted recording).
- */
+const CHANT_SRC = '/audio/om-gan-ganapataye.mp3'
+
+/** Optional Om Gan Ganapataye chant — starts only when the visitor taps. */
 export function CalmAmbience({ tx }: Props) {
   const [playing, setPlaying] = useState(false)
-  const ctxRef = useRef<AudioContext | null>(null)
-  const nodesRef = useRef<{ stop: () => void } | null>(null)
+  const audioRef = useRef<HTMLAudioElement | null>(null)
 
   useEffect(() => {
+    const audio = new Audio(CHANT_SRC)
+    audio.loop = true
+    audio.preload = 'none'
+    audio.volume = 0.55
+    audioRef.current = audio
+
+    const onEnded = () => setPlaying(false)
+    audio.addEventListener('pause', onEnded)
     return () => {
-      nodesRef.current?.stop()
-      void ctxRef.current?.close()
-      ctxRef.current = null
-      nodesRef.current = null
+      audio.pause()
+      audio.removeEventListener('pause', onEnded)
+      audioRef.current = null
     }
   }, [])
 
   async function toggle() {
+    const audio = audioRef.current
+    if (!audio) return
+
     if (playing) {
-      nodesRef.current?.stop()
-      nodesRef.current = null
+      audio.pause()
+      audio.currentTime = 0
       setPlaying(false)
       return
     }
 
-    const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext
-    const ctx = ctxRef.current ?? new AudioCtx()
-    ctxRef.current = ctx
-    if (ctx.state === 'suspended') await ctx.resume()
-
-    const master = ctx.createGain()
-    master.gain.value = 0.045
-    master.connect(ctx.destination)
-
-    const timers: number[] = []
-    let alive = true
-
-    function chime(at: number, freq: number, dur = 3.8) {
-      const osc = ctx.createOscillator()
-      const gain = ctx.createGain()
-      const filter = ctx.createBiquadFilter()
-      osc.type = 'sine'
-      osc.frequency.value = freq
-      filter.type = 'lowpass'
-      filter.frequency.value = 1800
-      gain.gain.setValueAtTime(0.0001, at)
-      gain.gain.exponentialRampToValueAtTime(0.22, at + 0.04)
-      gain.gain.exponentialRampToValueAtTime(0.0001, at + dur)
-      osc.connect(filter)
-      filter.connect(gain)
-      gain.connect(master)
-      osc.start(at)
-      osc.stop(at + dur + 0.05)
+    try {
+      await audio.play()
+      setPlaying(true)
+    } catch {
+      setPlaying(false)
     }
-
-    function scheduleLoop() {
-      if (!alive) return
-      const now = ctx.currentTime
-      chime(now + 0.05, 392)
-      chime(now + 0.18, 523.25)
-      chime(now + 2.4, 349.23)
-      chime(now + 4.8, 440)
-      timers.push(window.setTimeout(scheduleLoop, 9200))
-    }
-
-    scheduleLoop()
-    nodesRef.current = {
-      stop: () => {
-        alive = false
-        for (const id of timers) window.clearTimeout(id)
-        master.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.4)
-      },
-    }
-    setPlaying(true)
   }
 
   return (

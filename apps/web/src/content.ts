@@ -417,10 +417,8 @@ const dict = {
     motifTitle: 'Elephant & silk',
     motifBody:
       'The elephant is our house mark — auspicious, graceful, and rooted in tradition. Draped with saree silk, it becomes the quiet symbol of Ruhi Trends: craft, celebration, and care.',
-    heroShloka: 'वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।\nनिर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥',
-    heroShlokaMeaning: 'O Lord with the curved trunk — remove every obstacle from our work, always.',
-    ambiencePlay: 'Calm ambience',
-    ambiencePause: 'Pause ambience',
+    ambiencePlay: 'Om Gan Ganapataye',
+    ambiencePause: 'Pause chant',
   },
   te: {
     topStatsFallback: 'డిజైనర్ బూటిక్ · కూకట్‌పల్లి',
@@ -437,7 +435,7 @@ const dict = {
     heroKicker: 'KPHB 7వ ఫేజ్ · కూకట్‌పల్లి',
     heroBrand: 'రూహీ ట్రెండ్స్',
     heroSub: 'కస్టమ్ స్టిచింగ్ & డిజైనర్ ఎత్నిక్ వేర్',
-    heroTagline: 'సిల్క్, స్టిచ్, సందర్భ దుస్తులు — కూకట్‌పల్లిలో జాగ్రత్తగా తయారు.',
+    heroTagline: 'సిల్క్, స్టిచ్, సందర్భ కౌచర్. కూకట్‌పల్లి, హైదరాబాద్‌లో జాగ్రత్తగా ఫినిష్.',
     ctaQuote: 'ఫిట్టింగ్ రిజర్వ్',
     galleryTitle: 'అటెలియర్',
     galleryIntro: 'ఫ్యాబ్రిక్ నుండి ఫినిష్ వరకు — చీరలు, బ్రైడల్ ఫిట్టింగ్‌లు, కస్టమ్ స్టిచ్.',
@@ -670,10 +668,8 @@ const dict = {
     motifTitle: 'ఏనుగు & సిల్క్',
     motifBody:
       'ఏనుగు మా హౌస్ మార్క్ — శుభం, సొగసు, సంప్రదాయం. చీర సిల్క్‌తో కలిసి అది రూహీ ట్రెండ్స్ చిహ్నం: క్రాఫ్ట్, వేడుక, జాగ్రత్త.',
-    heroShloka: 'वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।\nनिर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥',
-    heroShlokaMeaning: 'వక్రతుండ మహాకాయ — అన్ని కార్యాల్లో విఘ్నాలు తొలగించు.',
-    ambiencePlay: 'ప్రశాంత సంగీతం',
-    ambiencePause: 'సంగీతం ఆపు',
+    ambiencePlay: 'ఓం గం గణపతయే',
+    ambiencePause: 'చంత్ ఆపు',
   },
 } as const
 

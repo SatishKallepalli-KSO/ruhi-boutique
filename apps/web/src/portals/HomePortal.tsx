@@ -1,7 +1,13 @@
+import { useEffect, useState } from 'react'
 import type { Stats } from '../api'
+import { OpenBadge } from '../components/OpenBadge'
+import { Reveal } from '../components/Reveal'
 import {
+  atelierServices,
+  bridalTimeline,
   business,
   collections,
+  faqs,
   gallery,
   testimonials,
   type DictKey,
@@ -26,14 +32,29 @@ export function HomePortal({ lang, tx, stats, setPortal }: Props) {
     { title: tx('why4Title'), body: tx('why4Body') },
   ]
   const quotes = testimonials[lang].slice(0, 3)
+  const [lightbox, setLightbox] = useState<number | null>(null)
+  const [faqOpen, setFaqOpen] = useState<string | null>(faqs[0]?.id ?? null)
+
+  useEffect(() => {
+    if (lightbox == null) return
+    function onKey(e: KeyboardEvent) {
+      if (e.key === 'Escape') setLightbox(null)
+      if (e.key === 'ArrowRight') setLightbox((i) => (i == null ? i : (i + 1) % gallery.length))
+      if (e.key === 'ArrowLeft')
+        setLightbox((i) => (i == null ? i : (i - 1 + gallery.length) % gallery.length))
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [lightbox])
 
   return (
     <>
       <section className="hero hero-scenic hero-luxe" aria-label="Ruhi Trends">
-        <div className="hero-scenic-bg" aria-hidden="true">
+        <div className="hero-scenic-bg hero-kenburns" aria-hidden="true">
           <img src="/storefront.jpg" alt="" fetchPriority="high" decoding="async" />
         </div>
         <div className="hero-scenic-shade hero-luxe-shade" aria-hidden="true" />
+        <div className="hero-film" aria-hidden="true" />
         <div className="hero-copy hero-copy-on-media hero-luxe-copy">
           <img className="hero-logo" src="/logo.png" alt="" width={96} height={96} />
           <p className="hero-eyebrow">{tx('heroKicker')}</p>
@@ -52,7 +73,7 @@ export function HomePortal({ lang, tx, stats, setPortal }: Props) {
 
       <section className="luxe-bar" aria-label={tx('atmosphereLabel')}>
         <div className="luxe-bar-inner">
-          <p className="luxe-bar-kicker">{tx('atmosphereLabel')}</p>
+          <OpenBadge tx={tx} />
           <p className="luxe-bar-body">{tx('atmosphereBody')}</p>
           <div className="luxe-bar-actions">
             <a href={waHref(lang)} target="_blank" rel="noreferrer">
@@ -65,7 +86,7 @@ export function HomePortal({ lang, tx, stats, setPortal }: Props) {
         </div>
       </section>
 
-      <section className="section offer-luxe">
+      <Reveal as="section" className="section offer-luxe">
         <div className="section-head section-luxe-head">
           <p className="section-eyebrow">{tx('lookbookTitle')}</p>
           <h2>{tx('collectionsTitle')}</h2>
@@ -73,10 +94,7 @@ export function HomePortal({ lang, tx, stats, setPortal }: Props) {
         </div>
         <div className="offer-grid">
           {collections.map((item, index) => (
-            <article
-              key={item.id}
-              className={`offer-tile offer-tile-${(index % 3) + 1}`}
-            >
+            <article key={item.id} className={`offer-tile offer-tile-${(index % 3) + 1}`}>
               <div className="offer-tile-media">
                 <img src={item.image} alt="" loading={index < 2 ? 'eager' : 'lazy'} decoding="async" />
                 <div className="offer-tile-veil" aria-hidden="true" />
@@ -96,9 +114,37 @@ export function HomePortal({ lang, tx, stats, setPortal }: Props) {
             {tx('navStitch')}
           </button>
         </div>
-      </section>
+      </Reveal>
 
-      <section className="section begin-luxe">
+      <Reveal as="section" className="section services-atelier">
+        <div className="section-head section-luxe-head">
+          <p className="section-eyebrow">02</p>
+          <h2>{tx('servicesTitle')}</h2>
+          <p>{tx('servicesIntro')}</p>
+        </div>
+        <div className="services-atelier-grid">
+          {atelierServices.map((item) => (
+            <article key={item.id} className="service-atelier-card">
+              <p className="service-atelier-eta">{item[lang].eta}</p>
+              <h3>{item[lang].title}</h3>
+              <p>{item[lang].body}</p>
+            </article>
+          ))}
+        </div>
+        <div className="wa-intent-row" aria-label="WhatsApp shortcuts">
+          <a className="wa-chip" href={waHref(lang, 'visit')} target="_blank" rel="noreferrer">
+            {tx('waVisit')}
+          </a>
+          <a className="wa-chip" href={waHref(lang, 'stitch')} target="_blank" rel="noreferrer">
+            {tx('waStitch')}
+          </a>
+          <a className="wa-chip" href={waHref(lang, 'bridal')} target="_blank" rel="noreferrer">
+            {tx('waBridal')}
+          </a>
+        </div>
+      </Reveal>
+
+      <Reveal as="section" className="section begin-luxe">
         <div className="begin-luxe-layout">
           <div className="begin-luxe-copy">
             <p className="section-eyebrow">{tx('roleTitle')}</p>
@@ -138,15 +184,45 @@ export function HomePortal({ lang, tx, stats, setPortal }: Props) {
             </a>
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      <section className="section atelier-strip">
+      <Reveal as="section" className="section bridal-timeline">
+        <div className="bridal-timeline-layout">
+          <div className="bridal-timeline-copy">
+            <p className="section-eyebrow">Bridal</p>
+            <h2>{tx('bridalTitle')}</h2>
+            <p>{tx('bridalIntro')}</p>
+            <button type="button" className="btn btn-gold" onClick={() => setPortal('book')}>
+              {tx('serviceBridal')}
+            </button>
+          </div>
+          <ol className="bridal-steps">
+            {bridalTimeline.map((step, index) => (
+              <li key={step.id}>
+                <span className="bridal-step-num">0{index + 1}</span>
+                <div>
+                  <em>{step[lang].when}</em>
+                  <strong>{step[lang].title}</strong>
+                  <p>{step[lang].body}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </Reveal>
+
+      <Reveal as="section" className="section atelier-strip">
         <div className="atelier-strip-grid">
-          {gallery.slice(0, 3).map((shot) => (
-            <figure key={shot.src} className="atelier-shot">
+          {gallery.slice(0, 4).map((shot, index) => (
+            <button
+              key={shot.src}
+              type="button"
+              className="atelier-shot atelier-shot-btn"
+              onClick={() => setLightbox(index)}
+            >
               <img src={shot.src} alt={shot[lang]} loading="lazy" decoding="async" />
-              <figcaption>{shot[lang]}</figcaption>
-            </figure>
+              <span className="atelier-shot-cap">{shot[lang]}</span>
+            </button>
           ))}
         </div>
         <div className="atelier-strip-copy">
@@ -154,9 +230,9 @@ export function HomePortal({ lang, tx, stats, setPortal }: Props) {
           <h2>{tx('galleryTitle')}</h2>
           <p>{tx('galleryIntro')}</p>
         </div>
-      </section>
+      </Reveal>
 
-      <section className="section why-luxe">
+      <Reveal as="section" className="section why-luxe">
         <div className="section-head section-luxe-head">
           <p className="section-eyebrow">04</p>
           <h2>{tx('whyTitle')}</h2>
@@ -171,9 +247,43 @@ export function HomePortal({ lang, tx, stats, setPortal }: Props) {
             </article>
           ))}
         </div>
-      </section>
+      </Reveal>
 
-      <section className="section quotes-luxe">
+      <Reveal as="section" className="section care-strip">
+        <div className="care-strip-inner">
+          <p className="section-eyebrow">{tx('careTitle')}</p>
+          <h2>{tx('careTitle')}</h2>
+          <p>{tx('careBody')}</p>
+        </div>
+      </Reveal>
+
+      <Reveal as="section" className="section faq-atelier">
+        <div className="section-head section-luxe-head">
+          <h2>{tx('faqTitle')}</h2>
+          <p>{tx('faqIntro')}</p>
+        </div>
+        <div className="faq-list">
+          {faqs.map((item) => {
+            const open = faqOpen === item.id
+            return (
+              <div key={item.id} className={`faq-item${open ? ' is-open' : ''}`}>
+                <button
+                  type="button"
+                  className="faq-q"
+                  aria-expanded={open}
+                  onClick={() => setFaqOpen(open ? null : item.id)}
+                >
+                  <span>{item[lang].q}</span>
+                  <em aria-hidden="true">{open ? '−' : '+'}</em>
+                </button>
+                {open ? <p className="faq-a">{item[lang].a}</p> : null}
+              </div>
+            )
+          })}
+        </div>
+      </Reveal>
+
+      <Reveal as="section" className="section quotes-luxe">
         <div className="section-head section-luxe-head">
           <h2>{tx('testimonialsTitle')}</h2>
           <p>{tx('testimonialsIntro')}</p>
@@ -191,7 +301,7 @@ export function HomePortal({ lang, tx, stats, setPortal }: Props) {
             </blockquote>
           ))}
         </div>
-      </section>
+      </Reveal>
 
       {stats && (stats.open_appointments > 0 || stats.open_orders > 0 || stats.ready_orders > 0) ? (
         <section className="desk-pulse" aria-label={tx('trustLiveLabel')}>
@@ -235,6 +345,26 @@ export function HomePortal({ lang, tx, stats, setPortal }: Props) {
           </div>
         </div>
       </section>
+
+      {lightbox != null && (
+        <div
+          className="lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label={gallery[lightbox][lang]}
+          onClick={() => setLightbox(null)}
+        >
+          <button type="button" className="lightbox-close" onClick={() => setLightbox(null)}>
+            {tx('lightboxClose')}
+          </button>
+          <img
+            src={gallery[lightbox].src}
+            alt={gallery[lightbox][lang]}
+            onClick={(e) => e.stopPropagation()}
+          />
+          <p className="lightbox-caption">{gallery[lightbox][lang]}</p>
+        </div>
+      )}
     </>
   )
 }

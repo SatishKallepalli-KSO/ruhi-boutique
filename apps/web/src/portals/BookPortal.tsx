@@ -1,4 +1,5 @@
 import type { FormEvent } from 'react'
+import { OpenBadge } from '../components/OpenBadge'
 import { business, type DictKey, type Lang } from '../content'
 import { todayISO } from '../lib/format'
 import { waHref } from '../lib/whatsapp'
@@ -23,10 +24,15 @@ type Props = {
 
 export function BookPortal({ lang, tx, form, setForm, busy, onSubmit }: Props) {
   return (
-    <section className="portal">
-      <div className="section-head">
-        <h2>{tx('bookTitle')}</h2>
-        <p>{tx('bookIntro')}</p>
+    <section className="portal form-portal-luxe">
+      <div className="form-portal-hero">
+        <img src="/gallery-fitting.jpg" alt="" loading="eager" />
+        <div>
+          <p className="section-eyebrow">{tx('atmosphereLabel')}</p>
+          <h2>{tx('bookTitle')}</h2>
+          <p>{tx('bookIntro')}</p>
+          <OpenBadge tx={tx} />
+        </div>
       </div>
       <div className="form-shell">
         <form className="panel-form" onSubmit={onSubmit}>
@@ -99,14 +105,23 @@ export function BookPortal({ lang, tx, form, setForm, busy, onSubmit }: Props) {
             <a className="btn btn-ghost" href={`tel:${business.phone}`}>
               {tx('callNow')}
             </a>
-            <a className="btn btn-ghost" href={waHref(lang)} target="_blank" rel="noreferrer">
+            <a className="btn btn-ghost" href={waHref(lang, 'visit')} target="_blank" rel="noreferrer">
               {tx('whatsapp')}
             </a>
           </div>
         </form>
-        <aside className="form-aside">
+        <aside className="form-aside form-aside-luxe">
           <p className="form-aside-kicker">{tx('hours')}</p>
           <p>{tx('formOfficeNote')}</p>
+          <p className="form-aside-extra">{tx('formAsideVisit')}</p>
+          <div className="wa-intent-col">
+            <a href={waHref(lang, 'visit')} target="_blank" rel="noreferrer">
+              {tx('waVisit')}
+            </a>
+            <a href={waHref(lang, 'bridal')} target="_blank" rel="noreferrer">
+              {tx('waBridal')}
+            </a>
+          </div>
         </aside>
       </div>
     </section>

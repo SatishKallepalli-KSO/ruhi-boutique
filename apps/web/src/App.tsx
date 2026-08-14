@@ -20,6 +20,7 @@ import { PhoneLinks } from './components/PhoneLinks'
 import { PortalBack } from './components/PortalBack'
 import { BrandMark } from './components/BrandMark'
 import { LocalNow } from './components/LocalNow'
+import { OpenBadge } from './components/OpenBadge'
 import { address, business, t, type Lang } from './content'
 import { waHref } from './lib/whatsapp'
 import { AdminPortal, type AdminTab } from './portals/AdminPortal'
@@ -356,7 +357,11 @@ export default function App() {
     <div className={`site lang-${lang}`}>
       <div className="topbar">
         <span className="topbar-banner">
-          {tx('hours')} · <PhoneLinks />
+          <OpenBadge tx={tx} className="topbar-open" />
+          <span className="topbar-sep" aria-hidden="true">
+            ·
+          </span>
+          <PhoneLinks />
         </span>
         <LocalNow lang={lang} tx={tx} />
       </div>

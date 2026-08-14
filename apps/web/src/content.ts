@@ -80,6 +80,94 @@ export const gallery = [
   { src: '/gallery-fitting.jpg', en: 'Fitting room', te: 'ఫిట్టింగ్ రూమ్' },
 ] as const
 
+export const atelierServices = [
+  {
+    id: 'blouse',
+    en: { title: 'Blouse stitching', body: 'Measured in-house, finished with clean edges and neat lining.', eta: 'Usually 3–5 days' },
+    te: { title: 'బ్లౌజ్ స్టిచింగ్', body: 'ఇంట్లో కొలతలు — చక్కని ఎడ్జ్, లైనింగ్ ఫినిష్.', eta: 'సాధారణంగా 3–5 రోజులు' },
+  },
+  {
+    id: 'alter',
+    en: { title: 'Alterations', body: 'Length, fit, and restyle for saree blouses, lehengas, and kurtis.', eta: 'Often same / next day' },
+    te: { title: 'ఆల్టరేషన్స్', body: 'పొడవు, ఫిట్, రీస్టైల్ — బ్లౌజ్, లెహెంగా, కుర్తీ.', eta: 'తరచు అదే / తర్వాత రోజు' },
+  },
+  {
+    id: 'lehenga',
+    en: { title: 'Lehenga & party', body: 'Festive sets tailored for movement, comfort, and occasion polish.', eta: 'Plan 7–12 days' },
+    te: { title: 'లెహెంగా & పార్టీ', body: 'కదలిక, సౌకర్యం, సందర్భ ఫినిష్‌కు తగిన ఫిట్టింగ్.', eta: '7–12 రోజులు ప్లాన్ చేయండి' },
+  },
+  {
+    id: 'bridal',
+    en: { title: 'Bridal atelier', body: 'Consultations, trials, and wedding-week timelines handled calmly.', eta: 'Start 4–8 weeks early' },
+    te: { title: 'బ్రైడల్ అటెలియర్', body: 'కన్సల్టేషన్, ట్రయల్స్, పెళ్లి వారం టైమ్‌లైన్ ప్రశాంతంగా.', eta: '4–8 వారాల ముందు ప్రారంభం' },
+  },
+] as const
+
+export const bridalTimeline = [
+  {
+    id: 'consult',
+    en: { when: '4–8 weeks before', title: 'Private consult', body: 'Mood, silhouette, fabric, and occasion plan.' },
+    te: { when: '4–8 వారాల ముందు', title: 'ప్రైవేట్ కన్సల్ట్', body: 'లుక్, సిల్హౌట్, ఫ్యాబ్రిక్, సందర్భ ప్లాన్.' },
+  },
+  {
+    id: 'measure',
+    en: { when: '3–5 weeks before', title: 'Measure & trial', body: 'Precise measurements, first trial, and detailing notes.' },
+    te: { when: '3–5 వారాల ముందు', title: 'కొలతలు & ట్రయల్', body: 'ఖచ్చితమైన కొలతలు, మొదటి ట్రయల్, డీటెయిలింగ్.' },
+  },
+  {
+    id: 'finish',
+    en: { when: '1–2 weeks before', title: 'Final finish', body: 'Last adjustments so the look sits perfectly on the day.' },
+    te: { when: '1–2 వారాల ముందు', title: 'ఫైనల్ ఫినిష్', body: 'రోజున సరిగ్గా కూర్చునేలా చివరి అడ్జస్ట్‌మెంట్స్.' },
+  },
+] as const
+
+export const faqs = [
+  {
+    id: 'walkin',
+    en: {
+      q: 'Can I walk in without a reservation?',
+      a: 'Yes — walk-ins are welcome during boutique hours. Reserving helps us keep quiet time for fittings and bridal consults.',
+    },
+    te: {
+      q: 'రిజర్వేషన్ లేకుండా వచ్చే వచ్చా?',
+      a: 'అవును — బూటిక్ సమయాల్లో వెల్కమ్. రిజర్వ్ చేస్తే ఫిట్టింగ్‌లు, బ్రైడల్ కన్సల్ట్‌లకు ప్రశాంత సమయం ఉంటుంది.',
+    },
+  },
+  {
+    id: 'fabric',
+    en: {
+      q: 'Do you work with my own fabric?',
+      a: 'Yes. Bring your saree, blouse piece, or fabric — we measure, stitch, and finish it in the atelier.',
+    },
+    te: {
+      q: 'నా ఫ్యాబ్రిక్‌తో స్టిచ్ చేస్తారా?',
+      a: 'అవును. చీర, బ్లౌజ్ పీస్ లేదా ఫ్యాబ్రిక్ తీసుకురండి — కొలతలు, స్టిచ్, ఫినిష్ అటెలియర్‌లోనే.',
+    },
+  },
+  {
+    id: 'urgent',
+    en: {
+      q: 'Can you take urgent alterations?',
+      a: 'Often yes for simple alterations, depending on the day’s queue. Call or WhatsApp and we will confirm the same day.',
+    },
+    te: {
+      q: 'అత్యవసర ఆల్టరేషన్ చేస్తారా?',
+      a: 'సాధారణ ఆల్టరేషన్‌లకు తరచు అవును — రోజు క్యూ మీద ఆధారపడి. కాల్ లేదా వాట్సాప్ చేస్తే అదే రోజు నిర్ధారిస్తాం.',
+    },
+  },
+  {
+    id: 'kids',
+    en: {
+      q: 'Do you stitch kids ethnic wear?',
+      a: 'Yes — festive kids looks for family functions, with soft fabrics and neat finishing.',
+    },
+    te: {
+      q: 'పిల్లల ఎత్నిక్ వేర్ స్టిచ్ చేస్తారా?',
+      a: 'అవును — కుటుంబ వేడుకలకు సాఫ్ట్ ఫ్యాబ్రిక్, చక్కని ఫినిష్‌తో పిల్లల లుక్‌లు.',
+    },
+  },
+] as const
+
 
 const dict = {
   en: {
@@ -307,6 +395,25 @@ const dict = {
     privacyS6Body: 'For privacy questions, call the boutique phone listed on this site.',
     privacyContact: 'Contact:',
     privacyUpdated: 'Last updated: August 2026',
+    openNow: 'Open now',
+    closedNow: 'Closed now',
+    hoursShort: '10:00–20:30',
+    waVisit: 'WhatsApp visit',
+    waStitch: 'WhatsApp stitch',
+    waBridal: 'WhatsApp bridal',
+    servicesTitle: 'Atelier services',
+    servicesIntro: 'Typical turnaround — confirmed in person based on fabric, detailing, and the day’s queue.',
+    bridalTitle: 'Bridal & occasion timeline',
+    bridalIntro: 'A calm path from first consult to final finish — so wedding week stays light.',
+    faqTitle: 'Boutique FAQ',
+    faqIntro: 'Quick answers before you visit or request stitching.',
+    careTitle: 'Care notes',
+    careBody: 'Silk and heavy work pieces prefer soft hanging, gentle steam, and dry-clean when embellished. Ask the desk for fabric-specific guidance.',
+    stitchTipTitle: 'Measurement tip',
+    stitchTipBody: 'Wear a well-fitting blouse or similar garment when you visit for measurements. Bring reference photos and your fabric / saree if you have them.',
+    formAsideVisit: 'Private fittings · Same-day confirmation',
+    formAsideStitch: 'Blouse to bridal · Measured in-house',
+    lightboxClose: 'Close',
   },
   te: {
     topStatsFallback: 'డిజైనర్ బూటిక్ · కూకట్‌పల్లి',
@@ -349,7 +456,7 @@ const dict = {
     why2Body: 'పెళ్లి, రిసెప్షన్, పండుగ లుక్‌లు మీ టైమ్‌లైన్‌కు అనుగుణంగా.',
     why3Title: 'సులభంగా దొరుకుతుంది',
     why3Body: 'LIG-140, KPHB 7వ ఫేజ్‌లో బాస్కెట్‌బాల్ గ్రౌండ్ ఎదురుగా.',
-    why4Title: 'సులభ బుకింగ్',
+    why4Title: 'సులభ షెడ్యూలింగ్',
     why4Body: 'విజిట్ లేదా స్టిచ్ రిక్వెస్ట్ ఆన్‌లైన్ — ఫోన్/వాట్సాప్‌తో నిర్ధారణ.',
     backLabel: '← వెనక్కి',
     backHome: 'హోమ్‌కు వెనక్కి',
@@ -522,7 +629,7 @@ const dict = {
       'అపాయింట్‌మెంట్ నిర్ధారణ, కొలతలు, స్టిచింగ్/ఆల్టరేషన్ కోసం మాత్రమే. మీ సమాచారం అమ్మము.',
     privacyS3Title: 'ఎవరు చూస్తారు',
     privacyS3Body:
-      'అడ్మిన్ PIN ఉన్న స్టాఫ్ పూర్తి బుకింగ్ వివరాలు చూస్తారు. పబ్లిక్ పేజీల్లో ఫోన్ కనిపించదు.',
+      'అడ్మిన్ PIN ఉన్న స్టాఫ్ పూర్తి విజిట్ మరియు ఆర్డర్ వివరాలు చూస్తారు. పబ్లిక్ పేజీల్లో ఫోన్ కనిపించదు.',
     privacyS4Title: 'సైట్ అనలిటిక్స్',
     privacyS4Body:
       'పేజీ విజిట్‌లను అగ్రిగేట్‌గా లెక్కిస్తాం. IP స్టోర్ కాదు — యూనిక్ కౌంట్ కోసం స్వల్పకాలిక హాష్, CDN దేశం/నగరం మాత్రమే.',
@@ -533,6 +640,25 @@ const dict = {
     privacyS6Body: 'ప్రైవసీ ప్రశ్నలకు ఈ సైట్‌లోని బూటిక్ ఫోన్‌కు కాల్ చేయండి.',
     privacyContact: 'సంప్రదింపు:',
     privacyUpdated: 'చివరి అప్‌డేట్: ఆగస్టు 2026',
+    openNow: 'ఇప్పుడు ఓపెన్',
+    closedNow: 'ఇప్పుడు క్లోజ్డ్',
+    hoursShort: '10:00–20:30',
+    waVisit: 'వాట్సాప్ విజిట్',
+    waStitch: 'వాట్సాప్ స్టిచ్',
+    waBridal: 'వాట్సాప్ బ్రైడల్',
+    servicesTitle: 'అటెలియర్ సేవలు',
+    servicesIntro: 'సాధారణ టర్న్‌అరౌండ్ — ఫ్యాబ్రిక్, డీటెయిలింగ్, రోజు క్యూ ప్రకారం వ్యక్తిగతంగా నిర్ధారణ.',
+    bridalTitle: 'బ్రైడల్ & సందర్భ టైమ్‌లైన్',
+    bridalIntro: 'మొదటి కన్సల్ట్ నుండి ఫైనల్ ఫినిష్ వరకు ప్రశాంత మార్గం — పెళ్లి వారం తేలికగా ఉండేలా.',
+    faqTitle: 'బూటిక్ FAQ',
+    faqIntro: 'విజిట్ లేదా స్టిచ్ రిక్వెస్ట్ ముందు త్వరిత సమాధానాలు.',
+    careTitle: 'కేర్ నోట్స్',
+    careBody: 'సిల్క్, హెవీ వర్క్ పీస్‌లకు సాఫ్ట్ హ్యాంగ్, జెంటిల్ స్టీమ్, ఎంబెలిష్‌మెంట్ ఉంటే డ్రై-క్లీన్ మంచిది. ఫ్యాబ్రిక్ గైడెన్స్ కోసం డెస్క్‌ను అడగండి.',
+    stitchTipTitle: 'కొలతల చిట్కా',
+    stitchTipBody: 'కొలతలకు వచ్చేటప్పుడు బాగా సరిపోయే బ్లౌజ్ లేదా సమాన గార్మెంట్ వేసుకోండి. రెఫరెన్స్ ఫోటోలు, ఫ్యాబ్రిక్/చీర తీసుకురండి.',
+    formAsideVisit: 'ప్రైవేట్ ఫిట్టింగ్‌లు · అదే రోజు నిర్ధారణ',
+    formAsideStitch: 'బ్లౌజ్ నుండి బ్రైడల్ · ఇంట్లో కొలతలు',
+    lightboxClose: 'మూసివేయి',
   },
 } as const
 

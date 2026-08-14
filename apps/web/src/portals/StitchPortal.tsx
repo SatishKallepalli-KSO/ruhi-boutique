@@ -1,4 +1,5 @@
 import type { FormEvent } from 'react'
+import { OpenBadge } from '../components/OpenBadge'
 import { business, type DictKey, type Lang } from '../content'
 import { todayISO } from '../lib/format'
 import { waHref } from '../lib/whatsapp'
@@ -24,10 +25,15 @@ type Props = {
 
 export function StitchPortal({ lang, tx, form, setForm, busy, onSubmit }: Props) {
   return (
-    <section className="portal">
-      <div className="section-head">
-        <h2>{tx('stitchTitle')}</h2>
-        <p>{tx('stitchIntro')}</p>
+    <section className="portal form-portal-luxe">
+      <div className="form-portal-hero">
+        <img src="/gallery-stitch.jpg" alt="" loading="eager" />
+        <div>
+          <p className="section-eyebrow">{tx('navStitch')}</p>
+          <h2>{tx('stitchTitle')}</h2>
+          <p>{tx('stitchIntro')}</p>
+          <OpenBadge tx={tx} />
+        </div>
       </div>
       <div className="form-shell">
         <form className="panel-form" onSubmit={onSubmit}>
@@ -71,6 +77,7 @@ export function StitchPortal({ lang, tx, form, setForm, busy, onSubmit }: Props)
             <input
               value={form.occasion}
               onChange={(e) => setForm({ ...form, occasion: e.target.value })}
+              placeholder={lang === 'te' ? 'పెళ్లి / పండుగ / పార్టీ' : 'Wedding / festive / party'}
             />
           </label>
           <label className="span-2">
@@ -104,14 +111,18 @@ export function StitchPortal({ lang, tx, form, setForm, busy, onSubmit }: Props)
             <a className="btn btn-ghost" href={`tel:${business.phone}`}>
               {tx('callNow')}
             </a>
-            <a className="btn btn-ghost" href={waHref(lang)} target="_blank" rel="noreferrer">
+            <a className="btn btn-ghost" href={waHref(lang, 'stitch')} target="_blank" rel="noreferrer">
               {tx('whatsapp')}
             </a>
           </div>
         </form>
-        <aside className="form-aside">
-          <p className="form-aside-kicker">{tx('hours')}</p>
-          <p>{tx('formOfficeNote')}</p>
+        <aside className="form-aside form-aside-luxe">
+          <p className="form-aside-kicker">{tx('stitchTipTitle')}</p>
+          <p>{tx('stitchTipBody')}</p>
+          <p className="form-aside-extra">{tx('formAsideStitch')}</p>
+          <a className="btn btn-ghost" href={waHref(lang, 'stitch')} target="_blank" rel="noreferrer">
+            {tx('waStitch')}
+          </a>
         </aside>
       </div>
     </section>

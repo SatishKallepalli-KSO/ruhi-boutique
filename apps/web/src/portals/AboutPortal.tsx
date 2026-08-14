@@ -1,3 +1,4 @@
+import { OpenBadge } from '../components/OpenBadge'
 import { PhoneLinks } from '../components/PhoneLinks'
 import { waHref } from '../lib/whatsapp'
 import { address, business, type DictKey, type Lang } from '../content'
@@ -9,12 +10,14 @@ type Props = {
 
 export function AboutPortal({ lang, tx }: Props) {
   return (
-    <section className="portal about-page">
-      <div className="section-head about-head">
-        <img className="about-seal" src="/logo.png" alt="Ruhi Trends" />
-        <div>
+    <section className="portal about-page about-luxe">
+      <div className="about-storefront">
+        <img src="/storefront.jpg" alt={business.boutiqueName} loading="eager" />
+        <div className="about-storefront-copy">
+          <img className="about-seal" src="/logo.png" alt="Ruhi Trends" />
           <h2>{tx('aboutTitle')}</h2>
           <p>{tx('aboutIntro')}</p>
+          <OpenBadge tx={tx} />
         </div>
       </div>
       <div className="about-layout">

@@ -378,7 +378,7 @@ export default function App() {
           <BrandMark className="nav-mark" />
           <span className="nav-brand-text">
             <strong>Ruhi Trends</strong>
-            <small>ruhitrends.com</small>
+            <small>{business.boutiqueName}</small>
           </span>
         </a>
         <nav className="nav-links" id="primary-nav-links" aria-label="Primary">
@@ -553,9 +553,11 @@ export default function App() {
           <div className="footer-brand">
             <div className="footer-brand-row">
               <BrandMark className="footer-mark" />
-              <strong>Ruhi Trends</strong>
+              <span className="footer-brand-text">
+                <strong>Ruhi Trends</strong>
+                <em className="footer-store">{business.boutiqueName}</em>
+              </span>
             </div>
-            <p>{business.boutiqueName}</p>
             <p>
               <PhoneLinks />
             </p>

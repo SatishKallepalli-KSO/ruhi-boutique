@@ -131,11 +131,11 @@ a:hover {
   max-width: none;
   margin: 0;
   padding: 0.95rem max(1.25rem, calc((100% - var(--max)) / 2));
-  background: rgba(10, 10, 10, 0.94);
-  border-bottom: 1px solid rgba(196, 163, 90, 0.22);
+  background: rgba(255, 252, 247, 0.92);
+  border-bottom: 1px solid rgba(20, 18, 16, 0.08);
   backdrop-filter: blur(18px);
-  box-shadow: none;
-  color: #f7f4ef;
+  box-shadow: 0 10px 30px rgba(20, 18, 16, 0.04);
+  color: var(--ink);
 }
 
 .nav-brand {
@@ -150,20 +150,20 @@ a:hover {
   display: block;
   font-family: var(--font-display);
   font-size: 1.55rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
+  font-weight: 600;
+  letter-spacing: 0.06em;
   line-height: 1.05;
-  text-transform: uppercase;
-  color: #f7f4ef;
+  text-transform: none;
+  color: var(--brand);
 }
 
 .nav-brand small {
   display: block;
-  color: rgba(247, 244, 239, 0.55);
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  color: var(--accent-deep);
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+  text-transform: none;
 }
 
 .nav-mark {
@@ -191,17 +191,17 @@ a:hover {
   letter-spacing: 0.06em;
   line-height: 1.05;
   text-transform: none;
-  color: #fff;
+  color: var(--brand);
 }
 
 .nav-brand-text small,
 .nav-brand small {
   display: block;
-  color: rgba(247, 244, 239, 0.7);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  color: var(--accent-deep);
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: none;
 }
 
 .nav-links {
@@ -213,11 +213,11 @@ a:hover {
   appearance: none;
   border: 0;
   background: transparent;
-  color: rgba(247, 244, 239, 0.72);
+  color: var(--ink-soft);
   font: inherit;
   font-size: 0.78rem;
   font-weight: 600;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   cursor: pointer;
   padding: 0.5rem 0.65rem;
@@ -228,7 +228,7 @@ a:hover {
 .nav-links button:hover,
 .nav-links button.active {
   background: transparent;
-  color: #f7f4ef;
+  color: var(--brand);
   border-bottom-color: var(--accent);
 }
 
@@ -241,9 +241,9 @@ a:hover {
 .nav-menu-toggle {
   display: none;
   appearance: none;
-  border: 1px solid rgba(247, 244, 239, 0.28);
+  border: 1px solid var(--line);
   background: transparent;
-  color: #f7f4ef;
+  color: var(--brand);
   width: 2.75rem;
   height: 2.75rem;
   border-radius: 0;
@@ -280,15 +280,15 @@ a:hover {
   display: inline-flex;
   padding: 0.12rem;
   border-radius: 0;
-  background: rgba(247, 244, 239, 0.08);
-  border: 1px solid rgba(247, 244, 239, 0.18);
+  background: rgba(20, 18, 16, 0.04);
+  border: 1px solid var(--line);
 }
 
 .lang-switch button {
   appearance: none;
   border: 0;
   background: transparent;
-  color: rgba(247, 244, 239, 0.65);
+  color: var(--ink-soft);
   font: inherit;
   font-size: 0.72rem;
   font-weight: 650;
@@ -299,8 +299,8 @@ a:hover {
 }
 
 .lang-switch button.active {
-  background: var(--accent);
-  color: #0a0a0a;
+  background: var(--brand);
+  color: #fff;
 }
 
 .nav-cta,
@@ -4022,8 +4022,38 @@ button.data-card.active,
 
 .hero-luxe-shade {
   background:
-    linear-gradient(105deg, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.45) 42%, rgba(0, 0, 0, 0.2) 100%),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.55));
+    linear-gradient(105deg, rgba(20, 14, 8, 0.42) 0%, rgba(20, 14, 8, 0.18) 48%, rgba(20, 14, 8, 0.08) 100%),
+    linear-gradient(180deg, rgba(20, 14, 8, 0.08), rgba(20, 14, 8, 0.28));
+}
+
+.hero-film {
+  background:
+    linear-gradient(180deg, rgba(255, 236, 190, 0.12), transparent 32%),
+    radial-gradient(ellipse at 18% 78%, rgba(196, 163, 90, 0.14), transparent 48%);
+  mix-blend-mode: soft-light;
+  opacity: 0.85;
+}
+
+.hero-store {
+  margin: 0 0 0.85rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2.4vw, 1.45rem);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: #f3e2b0;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+}
+
+.footer-brand-text {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.footer-store {
+  font-style: normal;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  color: var(--accent);
 }
 
 .hero-luxe-copy {
@@ -4685,9 +4715,10 @@ button.data-card.active,
   z-index: 1;
   pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(245, 197, 24, 0.08), transparent 28%),
-    radial-gradient(ellipse at 20% 80%, rgba(245, 197, 24, 0.12), transparent 45%);
+    linear-gradient(180deg, rgba(255, 236, 190, 0.1), transparent 30%),
+    radial-gradient(ellipse at 20% 80%, rgba(196, 163, 90, 0.12), transparent 45%);
   mix-blend-mode: soft-light;
+  opacity: 0.8;
 }
 
 @keyframes atelier-kenburns {
@@ -5377,8 +5408,8 @@ button.data-card.active,
 
 @media (max-width: 900px) {
   .nav.is-menu-open .nav-links {
-    background: #0a0a0a;
-    border: 1px solid rgba(196, 163, 90, 0.2);
+    background: #fffcf7;
+    border: 1px solid var(--line);
   }
 
   .brand-lockup-text strong {

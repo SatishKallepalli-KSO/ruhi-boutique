@@ -51,7 +51,7 @@ export function HomePortal({ lang, tx, stats, setPortal }: Props) {
     <>
       <section className="hero hero-scenic hero-luxe" aria-label="Ruhi Trends">
         <div className="hero-scenic-bg hero-kenburns" aria-hidden="true">
-          <img src="/hero-premium.jpg" alt="" fetchPriority="high" decoding="async" />
+          <img src="/hero-atelier-light.jpg" alt="" fetchPriority="high" decoding="async" />
         </div>
         <div className="hero-scenic-shade hero-luxe-shade" aria-hidden="true" />
         <div className="hero-film" aria-hidden="true" />
@@ -59,6 +59,7 @@ export function HomePortal({ lang, tx, stats, setPortal }: Props) {
           <img className="hero-logo" src="/logo.png" alt="" width={128} height={128} />
           <p className="hero-eyebrow">{tx('heroKicker')}</p>
           <h1 className="hero-name">{tx('heroBrand')}</h1>
+          <p className="hero-store">{business.boutiqueName}</p>
           <p className="hero-tagline">{tx('heroTagline')}</p>
           <div className="hero-actions">
             <button type="button" className="btn btn-gold" onClick={() => setPortal('book')}>

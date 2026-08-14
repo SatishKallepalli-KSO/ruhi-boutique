@@ -51,7 +51,7 @@ export function HomePortal({ lang, tx, stats, setPortal }: Props) {
     <>
       <section className="hero hero-scenic hero-luxe" aria-label="Ruhi Trends">
         <div className="hero-scenic-bg hero-kenburns" aria-hidden="true">
-          <img src="/hero-atelier-light.jpg" alt="" fetchPriority="high" decoding="async" />
+          <img src="/motif-elephant-saree.jpg" alt="" fetchPriority="high" decoding="async" />
         </div>
         <div className="hero-scenic-shade hero-luxe-shade" aria-hidden="true" />
         <div className="hero-film" aria-hidden="true" />
@@ -77,7 +77,7 @@ export function HomePortal({ lang, tx, stats, setPortal }: Props) {
       <Reveal as="section" className="section motif-signature">
         <div className="motif-signature-layout">
           <div className="motif-signature-media">
-            <img src="/motif-elephant-saree.jpg" alt="" loading="lazy" decoding="async" />
+            <img src="/hero-atelier-light.jpg" alt="" loading="lazy" decoding="async" />
             <ElephantMotif className="motif-signature-icon" title="Ruhi elephant mark" />
           </div>
           <div className="motif-signature-copy">

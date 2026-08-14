@@ -53,9 +53,9 @@ STATIC_DIR = Path(__file__).resolve().parent.parent / "static"
 APP_URL = (os.getenv("APP_URL") or "").rstrip("/")
 
 app = FastAPI(
-    title="Ruhi's Boutique API",
+    title="Ruhi Trends API",
     version="0.1.0",
-    description="Boutique website — appointments, custom stitching, and admin desk",
+    description="Ruhi Trends boutique website — appointments, custom stitching, and admin desk",
 )
 
 _cors_origins = [
@@ -85,7 +85,7 @@ def healthz() -> dict[str, str]:
     backend = "postgres" if DATABASE_URL.startswith("postgresql") else "sqlite"
     return {
         "status": "ok",
-        "service": "ruhi-boutique-api",
+        "service": "ruhitrends-api",
         "db": backend,
         "timestamp": datetime.now(timezone.utc).isoformat(),
     }
@@ -94,7 +94,8 @@ def healthz() -> dict[str, str]:
 @app.get("/v1/office")
 def office_info() -> dict:
     return {
-        "name": "Ruhi's Boutique",
+        "name": "Ruhi Trends",
+        "boutique": "Ruhi's Boutique",
         "owner": "Ruhi",
         "phone": "+919908185597",
         "phones": ["+919908185597"],
@@ -103,6 +104,7 @@ def office_info() -> dict:
         "platform": "boutique",
         "version": "0.1.0",
         "app_url": APP_URL or None,
+        "domain": "ruhitrends.com",
     }
 
 

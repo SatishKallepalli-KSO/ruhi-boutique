@@ -3,7 +3,7 @@ type Props = {
   title?: string
 }
 
-export function BrandMark({ className, title = "Ruhi's Boutique" }: Props) {
+export function BrandMark({ className, title = 'Ruhi Trends' }: Props) {
   return (
     <img
       className={className}

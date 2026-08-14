@@ -372,8 +372,8 @@ export default function App() {
         >
           <BrandMark className="nav-mark" />
           <span>
-            <strong>Ruhi&apos;s Boutique</strong>
-            <small>Kukatpally</small>
+            <strong>Ruhi Trends</strong>
+            <small>ruhitrends.com</small>
           </span>
         </a>
         <nav className="nav-links" id="primary-nav-links" aria-label="Primary">

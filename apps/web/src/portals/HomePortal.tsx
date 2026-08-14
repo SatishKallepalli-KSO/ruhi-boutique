@@ -28,7 +28,7 @@ export function HomePortal({ lang, tx, stats, setPortal }: Props) {
 
   return (
     <>
-      <section className="hero hero-scenic" aria-label="Ruhi's Boutique">
+      <section className="hero hero-scenic" aria-label="Ruhi Trends">
         <div className="hero-scenic-bg" aria-hidden="true">
           <img src="/hero-boutique.jpg" alt="" fetchPriority="high" decoding="async" />
         </div>

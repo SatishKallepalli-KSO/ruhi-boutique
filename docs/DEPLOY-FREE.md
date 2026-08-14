@@ -1,28 +1,30 @@
 # Free deploy — Render + Neon
 
-Same free-tier pattern as Murali Transport: **Render Free Docker** + **Neon Free Postgres**.
+**Stack:** Render Free Docker web service + Neon Free Postgres  
+**Brand / domain:** Ruhi Trends · **https://ruhitrends.com**
 
-## One-click
+## Live service
 
-1. Push this repo to GitHub.
-2. Open: https://render.com/deploy?repo=https://github.com/SatishKallepalli-KSO/ruhi-boutique
-3. Set `ADMIN_PIN` (8+ strong characters) and `DATABASE_URL` (Neon pooled URL).
-4. Redeploy. Health: `https://ruhi-boutique.onrender.com/healthz`
+| | |
+|--|--|
+| Render service | `ruhitrends` (`srv-d9vaeo7lk1mc738g0v2g`) |
+| Fallback URL | https://ruhi-boutique.onrender.com |
+| Custom domains | `ruhitrends.com`, `www.ruhitrends.com` (added; verify DNS) |
+| `APP_URL` | `https://ruhitrends.com` |
 
-## Neon database
+## Custom domain (Cloudflare or any DNS)
 
-Create a Neon project (or a new database in the existing org), then:
+Same pattern as muralitransport.com:
 
-```bash
-neonctl connection-string \
-  --project-id <PROJECT_ID> \
-  --org-id org-falling-bird-44330402 \
-  --database-name ruhi \
-  --role-name ruhi \
-  --pooled
-```
+1. In Render → service **ruhitrends** → **Custom Domains**, confirm `ruhitrends.com` and `www.ruhitrends.com` are listed.
+2. At your domain registrar / Cloudflare DNS:
+   - **Apex** `ruhitrends.com`: CNAME Flattening / ALIAS / ANAME → `ruhi-boutique.onrender.com`  
+     (or the A/CNAME targets Render shows on the domain row)
+   - **www**: CNAME → `ruhi-boutique.onrender.com`
+3. Keep DNS **DNS-only** (grey cloud) until Render shows the domain as verified, then you can proxy.
+4. `APP_URL` is already set to `https://ruhitrends.com`.
 
-Paste the pooled URL into Render → Environment → `DATABASE_URL`.
+If the domain is not registered yet, buy **ruhitrends.com** first (Cloudflare Registrar works well with this stack).
 
 ## Local
 

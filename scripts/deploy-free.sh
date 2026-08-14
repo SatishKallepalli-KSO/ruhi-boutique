@@ -1,26 +1,22 @@
 #!/usr/bin/env bash
-# Open the one-click Render free deploy for Ruhi's Boutique.
+# Open the Render dashboard for Ruhi Trends.
 set -euo pipefail
 
-REPO_URL="https://github.com/SatishKallepalli-KSO/ruhi-boutique"
-DEPLOY_URL="https://render.com/deploy?repo=${REPO_URL}"
+DASHBOARD_URL="https://dashboard.render.com/web/srv-d9vaeo7lk1mc738g0v2g"
 LIVE_URL="https://ruhi-boutique.onrender.com"
+PRIMARY_URL="https://ruhitrends.com"
 
 echo ""
-echo "Ruhi's Boutique — free live deploy (Render)"
-echo "=========================================="
+echo "Ruhi Trends — Render"
+echo "===================="
 echo ""
-echo "1) One-click Blueprint (browser):"
-echo "   ${DEPLOY_URL}"
-echo ""
-echo "2) After deploy, set DATABASE_URL to Neon pooled URL, then:"
-echo "   ${LIVE_URL}"
+echo "Dashboard: ${DASHBOARD_URL}"
+echo "Primary:   ${PRIMARY_URL}  (after DNS)"
+echo "Fallback:  ${LIVE_URL}"
 echo ""
 
 if command -v open >/dev/null 2>&1; then
-  open "${DEPLOY_URL}"
+  open "${DASHBOARD_URL}"
 elif command -v xdg-open >/dev/null 2>&1; then
-  xdg-open "${DEPLOY_URL}"
-else
-  echo "Open the Blueprint URL above in your browser."
+  xdg-open "${DASHBOARD_URL}"
 fi

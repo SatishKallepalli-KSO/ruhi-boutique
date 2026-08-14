@@ -11,7 +11,7 @@ export function AboutPortal({ lang, tx }: Props) {
   return (
     <section className="portal about-page">
       <div className="section-head about-head">
-        <img className="about-seal" src="/logo.png" alt="Ruhi's Boutique" />
+        <img className="about-seal" src="/logo.png" alt="Ruhi Trends" />
         <div>
           <h2>{tx('aboutTitle')}</h2>
           <p>{tx('aboutIntro')}</p>
@@ -23,6 +23,10 @@ export function AboutPortal({ lang, tx }: Props) {
             <div>
               <dt>{tx('aboutOwnerLabel')}</dt>
               <dd>{business.name}</dd>
+            </div>
+            <div>
+              <dt>Store</dt>
+              <dd>{business.boutiqueName}</dd>
             </div>
             <div>
               <dt>{tx('aboutPhoneLabel')}</dt>

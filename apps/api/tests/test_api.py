@@ -41,7 +41,7 @@ def test_healthz() -> None:
     res = client.get("/healthz")
     assert res.status_code == 200
     assert res.json()["status"] == "ok"
-    assert res.json()["service"] == "ruhi-boutique-api"
+    assert res.json()["service"] == "ruhitrends-api"
 
 
 def test_office_info() -> None:

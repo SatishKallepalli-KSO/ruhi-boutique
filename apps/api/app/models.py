@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from datetime import date, datetime, timezone
 
-from sqlalchemy import Date, DateTime, Integer, String, Text
+from sqlalchemy import Date, DateTime, Integer, LargeBinary, String, Text
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.db import Base
@@ -99,3 +99,34 @@ class VisitUnique(Base):
 
     day: Mapped[date] = mapped_column(Date, primary_key=True)
     visitor_hash: Mapped[str] = mapped_column(String(64), primary_key=True)
+
+
+class CollectionPiece(Base):
+    """Admin-uploaded stock or design piece for the public collections."""
+
+    __tablename__ = "collection_pieces"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    title: Mapped[str] = mapped_column(String(160), nullable=False)
+    title_te: Mapped[str] = mapped_column(String(160), nullable=False, default="")
+    body: Mapped[str] = mapped_column(String(500), nullable=False, default="")
+    body_te: Mapped[str] = mapped_column(String(500), nullable=False, default="")
+    category: Mapped[str] = mapped_column(String(64), nullable=False, default="saree")
+    # saree | lehenga | bridal | kurti | kids | alteration | other
+    kind: Mapped[str] = mapped_column(String(32), nullable=False, default="design")
+    # stock | design
+    image_mime: Mapped[str] = mapped_column(String(64), nullable=False, default="image/jpeg")
+    image_data: Mapped[bytes] = mapped_column(LargeBinary, nullable=False)
+    published: Mapped[str] = mapped_column(String(16), nullable=False, default="yes")
+    sort_order: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True),
+        nullable=False,
+        default=utcnow,
+    )
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True),
+        nullable=False,
+        default=utcnow,
+        onupdate=utcnow,
+    )

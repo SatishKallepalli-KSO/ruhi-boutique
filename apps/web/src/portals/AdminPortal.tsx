@@ -1,14 +1,19 @@
 import { useDeferredValue, useEffect, useMemo, useState, type FormEvent } from 'react'
 import {
   fetchVisitAnalytics,
+  fetchCollections,
+  createCollectionPiece,
+  updateCollectionPiece,
+  deleteCollectionPiece,
   type Appointment,
+  type CollectionPiece,
   type StitchOrder,
   type VisitAnalytics,
 } from '../api'
 import type { DictKey } from '../content'
 import { matchesQuery, paginateItems } from '../lib/format'
 
-export type AdminTab = 'snapshot' | 'appointments' | 'orders' | 'visits'
+export type AdminTab = 'snapshot' | 'appointments' | 'orders' | 'collections' | 'visits'
 
 type Props = {
   tx: (key: DictKey) => string
@@ -58,6 +63,19 @@ export function AdminPortal({
   const [visitStats, setVisitStats] = useState<VisitAnalytics | null>(null)
   const [visitError, setVisitError] = useState<string | null>(null)
   const [visitLoading, setVisitLoading] = useState(false)
+  const [pieces, setPieces] = useState<CollectionPiece[]>([])
+  const [pieceError, setPieceError] = useState<string | null>(null)
+  const [pieceBusy, setPieceBusy] = useState(false)
+  const [pieceForm, setPieceForm] = useState({
+    title: '',
+    title_te: '',
+    body: '',
+    body_te: '',
+    category: 'saree',
+    kind: 'design',
+    published: 'yes',
+  })
+  const [pieceFile, setPieceFile] = useState<File | null>(null)
 
   const deferredApptSearch = useDeferredValue(apptSearch)
   const deferredOrderSearch = useDeferredValue(orderSearch)
@@ -76,6 +94,22 @@ export function AdminPortal({
       })
       .finally(() => {
         if (!cancelled) setVisitLoading(false)
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [adminToken, adminTab])
+
+  useEffect(() => {
+    if (!adminToken || adminTab !== 'collections') return
+    let cancelled = false
+    setPieceError(null)
+    void fetchCollections(adminToken, 100)
+      .then((data) => {
+        if (!cancelled) setPieces(data)
+      })
+      .catch((err) => {
+        if (!cancelled) setPieceError(err instanceof Error ? err.message : 'Could not load collections')
       })
     return () => {
       cancelled = true
@@ -142,6 +176,61 @@ export function AdminPortal({
       .replace('{total}', String(total))
       .replace('{page}', String(page))
       .replace('{pages}', String(totalPages))
+  }
+
+  async function onUploadPiece(event: FormEvent) {
+    event.preventDefault()
+    if (!pieceFile || !pieceForm.title.trim()) return
+    setPieceBusy(true)
+    setPieceError(null)
+    try {
+      const form = new FormData()
+      form.append('title', pieceForm.title.trim())
+      form.append('title_te', pieceForm.title_te.trim())
+      form.append('body', pieceForm.body.trim())
+      form.append('body_te', pieceForm.body_te.trim())
+      form.append('category', pieceForm.category)
+      form.append('kind', pieceForm.kind)
+      form.append('published', pieceForm.published)
+      form.append('sort_order', '0')
+      form.append('image', pieceFile)
+      const created = await createCollectionPiece(adminToken, form)
+      setPieces((prev) => [created, ...prev])
+      setPieceForm({
+        title: '',
+        title_te: '',
+        body: '',
+        body_te: '',
+        category: 'saree',
+        kind: 'design',
+        published: 'yes',
+      })
+      setPieceFile(null)
+    } catch (err) {
+      setPieceError(err instanceof Error ? err.message : 'Upload failed')
+    } finally {
+      setPieceBusy(false)
+    }
+  }
+
+  async function togglePublished(row: CollectionPiece) {
+    const next = row.published === 'yes' ? 'no' : 'yes'
+    try {
+      const updated = await updateCollectionPiece(adminToken, row.id, { published: next })
+      setPieces((prev) => prev.map((p) => (p.id === row.id ? updated : p)))
+    } catch (err) {
+      setPieceError(err instanceof Error ? err.message : 'Update failed')
+    }
+  }
+
+  async function removePiece(id: number) {
+    if (!window.confirm(tx('collectionsDeleteConfirm'))) return
+    try {
+      await deleteCollectionPiece(adminToken, id)
+      setPieces((prev) => prev.filter((p) => p.id !== id))
+    } catch (err) {
+      setPieceError(err instanceof Error ? err.message : 'Delete failed')
+    }
   }
 
   function renderListControls(opts: {
@@ -231,6 +320,7 @@ export function AdminPortal({
                 { id: 'snapshot' as const, label: tx('tabSnapshot'), count: null },
                 { id: 'appointments' as const, label: tx('tabAppointments'), count: openApptCount },
                 { id: 'orders' as const, label: tx('tabOrders'), count: openOrderCount },
+                { id: 'collections' as const, label: tx('tabCollections'), count: pieces.length || null },
                 { id: 'visits' as const, label: tx('tabVisits'), count: null },
               ] as const
             ).map((tab) => (
@@ -513,6 +603,129 @@ export function AdminPortal({
                       {orderSearch.trim() ? tx('noSearchResults') : tx('noOrders')}
                     </li>
                   )}
+                </ul>
+              </section>
+            )}
+
+            {adminTab === 'collections' && (
+              <section className="admin-panel">
+                <header className="admin-panel-head">
+                  <div>
+                    <p className="admin-panel-kicker">{tx('tabCollections')}</p>
+                    <h3>{tx('collectionsAdminTitle')}</h3>
+                    <p className="admin-panel-hint">{tx('collectionsAdminIntro')}</p>
+                  </div>
+                </header>
+
+                {pieceError && <p className="flash flash-error">{pieceError}</p>}
+
+                <form className="panel-form" onSubmit={onUploadPiece}>
+                  <label>
+                    {tx('collectionsTitleField')}
+                    <input
+                      required
+                      value={pieceForm.title}
+                      onChange={(e) => setPieceForm({ ...pieceForm, title: e.target.value })}
+                    />
+                  </label>
+                  <label>
+                    {tx('collectionsTitleTeField')}
+                    <input
+                      value={pieceForm.title_te}
+                      onChange={(e) => setPieceForm({ ...pieceForm, title_te: e.target.value })}
+                    />
+                  </label>
+                  <label className="span-2">
+                    {tx('collectionsBodyField')}
+                    <textarea
+                      rows={2}
+                      value={pieceForm.body}
+                      onChange={(e) => setPieceForm({ ...pieceForm, body: e.target.value })}
+                    />
+                  </label>
+                  <label className="span-2">
+                    {tx('collectionsBodyTeField')}
+                    <textarea
+                      rows={2}
+                      value={pieceForm.body_te}
+                      onChange={(e) => setPieceForm({ ...pieceForm, body_te: e.target.value })}
+                    />
+                  </label>
+                  <label>
+                    {tx('collectionsCategory')}
+                    <select
+                      value={pieceForm.category}
+                      onChange={(e) => setPieceForm({ ...pieceForm, category: e.target.value })}
+                    >
+                      <option value="saree">Saree</option>
+                      <option value="lehenga">Lehenga</option>
+                      <option value="bridal">Bridal</option>
+                      <option value="kurti">Kurti</option>
+                      <option value="kids">Kids</option>
+                      <option value="alteration">Alteration</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </label>
+                  <label>
+                    {tx('collectionsKind')}
+                    <select
+                      value={pieceForm.kind}
+                      onChange={(e) => setPieceForm({ ...pieceForm, kind: e.target.value })}
+                    >
+                      <option value="design">{tx('collectionsKindDesign')}</option>
+                      <option value="stock">{tx('collectionsKindStock')}</option>
+                    </select>
+                  </label>
+                  <label>
+                    {tx('collectionsPublished')}
+                    <select
+                      value={pieceForm.published}
+                      onChange={(e) => setPieceForm({ ...pieceForm, published: e.target.value })}
+                    >
+                      <option value="yes">Yes</option>
+                      <option value="no">No</option>
+                    </select>
+                  </label>
+                  <label>
+                    {tx('collectionsImage')}
+                    <input
+                      required
+                      type="file"
+                      accept="image/jpeg,image/png,image/webp,image/gif"
+                      onChange={(e) => setPieceFile(e.target.files?.[0] ?? null)}
+                    />
+                  </label>
+                  <div className="form-actions span-2">
+                    <button className="btn btn-primary" type="submit" disabled={pieceBusy || !pieceFile}>
+                      {pieceBusy ? tx('submitting') : tx('collectionsUpload')}
+                    </button>
+                  </div>
+                </form>
+
+                <ul className="admin-card-list">
+                  {pieces.map((row) => (
+                    <li key={row.id} className="admin-card">
+                      <div className="admin-card-media">
+                        <img src={row.image_url} alt="" loading="lazy" />
+                      </div>
+                      <div className="admin-card-body">
+                        <strong>{row.title}</strong>
+                        <p>
+                          {row.kind} · {row.category} · {row.published === 'yes' ? 'published' : 'hidden'}
+                        </p>
+                        {row.body ? <em>{row.body}</em> : null}
+                      </div>
+                      <div className="admin-card-actions">
+                        <button type="button" className="btn btn-ghost" onClick={() => void togglePublished(row)}>
+                          {row.published === 'yes' ? 'Hide' : 'Publish'}
+                        </button>
+                        <button type="button" className="btn btn-ghost" onClick={() => void removePiece(row.id)}>
+                          {tx('delete')}
+                        </button>
+                      </div>
+                    </li>
+                  ))}
+                  {pieces.length === 0 && <li className="empty">{tx('collectionsEmpty')}</li>}
                 </ul>
               </section>
             )}

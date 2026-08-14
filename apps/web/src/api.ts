@@ -193,3 +193,64 @@ export const fetchVisitAnalytics = (token: string, days = 14) =>
   api<VisitAnalytics>(`/v1/admin/analytics?days=${days}`, {
     headers: { Authorization: `Bearer ${token}` },
   })
+
+export type CollectionPiece = {
+  id: number
+  title: string
+  title_te: string
+  body: string
+  body_te: string
+  category: string
+  kind: string
+  published: string
+  sort_order: number
+  image_url: string
+  created_at: string
+  updated_at: string
+}
+
+export const fetchCollections = (token?: string, limit = 48) =>
+  api<CollectionPiece[]>(`/v1/collections?limit=${limit}`, {
+    headers: token ? { Authorization: `Bearer ${token}` } : undefined,
+  })
+
+export async function createCollectionPiece(
+  token: string,
+  form: FormData,
+): Promise<CollectionPiece> {
+  const res = await fetch(`${apiBase}/v1/collections`, {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${token}` },
+    body: form,
+  })
+  if (!res.ok) {
+    const fallback = `Request failed (${res.status})`
+    const raw = await res.text()
+    let message = raw || fallback
+    try {
+      const parsed = JSON.parse(raw) as { detail?: unknown }
+      message = formatApiDetail(parsed.detail, fallback)
+    } catch {
+      /* keep text */
+    }
+    throw new Error(message)
+  }
+  return res.json() as Promise<CollectionPiece>
+}
+
+export const updateCollectionPiece = (
+  token: string,
+  id: number,
+  body: Record<string, unknown>,
+) =>
+  api<CollectionPiece>(`/v1/collections/${id}`, {
+    method: 'PATCH',
+    headers: { Authorization: `Bearer ${token}` },
+    body: JSON.stringify(body),
+  })
+
+export const deleteCollectionPiece = (token: string, id: number) =>
+  api<{ status: string }>(`/v1/collections/${id}`, {
+    method: 'DELETE',
+    headers: { Authorization: `Bearer ${token}` },
+  })

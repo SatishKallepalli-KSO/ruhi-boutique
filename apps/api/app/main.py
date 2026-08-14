@@ -8,9 +8,9 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from dotenv import load_dotenv
-from fastapi import Depends, FastAPI, HTTPException, Request
+from fastapi import Depends, FastAPI, File, Form, HTTPException, Request, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, Response
 from fastapi.staticfiles import StaticFiles
 from sqlalchemy.orm import Session
 
@@ -23,7 +23,7 @@ from app.auth import (
     revoke_token,
 )
 from app.db import get_db, init_db
-from app.models import Appointment, StitchOrder, utcnow
+from app.models import Appointment, CollectionPiece, StitchOrder, utcnow
 from app.rate_limit import (
     clear_login_failures,
     client_ip,
@@ -40,6 +40,8 @@ from app.schemas import (
     AppointmentCreate,
     AppointmentOut,
     AppointmentUpdate,
+    CollectionPieceOut,
+    CollectionPieceUpdate,
     StitchOrderCreate,
     StitchOrderOut,
     StitchOrderUpdate,
@@ -376,6 +378,141 @@ def delete_stitch_order(
     row = db.get(StitchOrder, order_id)
     if not row:
         raise HTTPException(status_code=404, detail="Stitch order not found")
+    db.delete(row)
+    db.commit()
+    return {"status": "ok"}
+
+
+ALLOWED_IMAGE_TYPES = {
+    "image/jpeg",
+    "image/jpg",
+    "image/png",
+    "image/webp",
+    "image/gif",
+}
+MAX_IMAGE_BYTES = 2_500_000
+
+
+def _piece_out(row: CollectionPiece) -> CollectionPieceOut:
+    return CollectionPieceOut(
+        id=row.id,
+        title=row.title,
+        title_te=row.title_te,
+        body=row.body,
+        body_te=row.body_te,
+        category=row.category,
+        kind=row.kind,
+        published=row.published,
+        sort_order=row.sort_order,
+        image_url=f"/v1/collections/{row.id}/image",
+        created_at=row.created_at,
+        updated_at=row.updated_at,
+    )
+
+
+@app.get("/v1/collections", response_model=list[CollectionPieceOut])
+def list_collections(
+    kind: str | None = None,
+    limit: int = 48,
+    db: Session = Depends(get_db),
+    admin: str | None = Depends(optional_admin),
+) -> list[CollectionPieceOut]:
+    limit = max(1, min(limit, 200))
+    q = db.query(CollectionPiece).order_by(
+        CollectionPiece.sort_order.asc(),
+        CollectionPiece.created_at.desc(),
+    )
+    if not admin:
+        q = q.filter(CollectionPiece.published == "yes")
+    if kind:
+        q = q.filter(CollectionPiece.kind == kind.strip())
+    return [_piece_out(row) for row in q.limit(limit).all()]
+
+
+@app.get("/v1/collections/{piece_id}/image")
+def collection_image(piece_id: int, db: Session = Depends(get_db)) -> Response:
+    row = db.get(CollectionPiece, piece_id)
+    if not row:
+        raise HTTPException(status_code=404, detail="Piece not found")
+    return Response(content=row.image_data, media_type=row.image_mime or "image/jpeg")
+
+
+@app.post("/v1/collections", response_model=CollectionPieceOut, status_code=201)
+async def create_collection_piece(
+    title: str = Form(...),
+    body: str = Form(""),
+    title_te: str = Form(""),
+    body_te: str = Form(""),
+    category: str = Form("saree"),
+    kind: str = Form("design"),
+    published: str = Form("yes"),
+    sort_order: int = Form(0),
+    image: UploadFile = File(...),
+    db: Session = Depends(get_db),
+    _: str = Depends(require_admin),
+) -> CollectionPieceOut:
+    mime = (image.content_type or "").lower().strip()
+    if mime not in ALLOWED_IMAGE_TYPES:
+        raise HTTPException(status_code=400, detail="Please upload a JPG, PNG, or WebP image.")
+    data = await image.read()
+    if not data:
+        raise HTTPException(status_code=400, detail="Empty image upload.")
+    if len(data) > MAX_IMAGE_BYTES:
+        raise HTTPException(status_code=400, detail="Image must be under 2.5 MB.")
+
+    kind_norm = (kind or "design").strip().lower()
+    if kind_norm not in {"stock", "design"}:
+        kind_norm = "design"
+    pub = "yes" if (published or "yes").strip().lower() in {"yes", "true", "1", "published"} else "no"
+
+    row = CollectionPiece(
+        title=title.strip(),
+        title_te=(title_te or "").strip(),
+        body=(body or "").strip(),
+        body_te=(body_te or "").strip(),
+        category=(category or "saree").strip() or "saree",
+        kind=kind_norm,
+        image_mime=mime if mime != "image/jpg" else "image/jpeg",
+        image_data=data,
+        published=pub,
+        sort_order=int(sort_order or 0),
+    )
+    db.add(row)
+    db.commit()
+    db.refresh(row)
+    return _piece_out(row)
+
+
+@app.patch("/v1/collections/{piece_id}", response_model=CollectionPieceOut)
+def update_collection_piece(
+    piece_id: int,
+    body: CollectionPieceUpdate,
+    db: Session = Depends(get_db),
+    _: str = Depends(require_admin),
+) -> CollectionPieceOut:
+    row = db.get(CollectionPiece, piece_id)
+    if not row:
+        raise HTTPException(status_code=404, detail="Piece not found")
+    data = body.model_dump(exclude_unset=True)
+    for key, value in data.items():
+        if isinstance(value, str):
+            value = value.strip()
+        setattr(row, key, value)
+    row.updated_at = utcnow()
+    db.commit()
+    db.refresh(row)
+    return _piece_out(row)
+
+
+@app.delete("/v1/collections/{piece_id}")
+def delete_collection_piece(
+    piece_id: int,
+    db: Session = Depends(get_db),
+    _: str = Depends(require_admin),
+) -> dict[str, str]:
+    row = db.get(CollectionPiece, piece_id)
+    if not row:
+        raise HTTPException(status_code=404, detail="Piece not found")
     db.delete(row)
     db.commit()
     return {"status": "ok"}

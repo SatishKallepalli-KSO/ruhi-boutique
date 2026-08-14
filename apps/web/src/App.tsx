@@ -230,7 +230,7 @@ export default function App() {
           : `Visit #${created.id} received. The boutique will confirm shortly.`,
       )
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Could not book visit')
+      setError(err instanceof Error ? err.message : 'Could not reserve visit')
     } finally {
       setBusy(false)
     }

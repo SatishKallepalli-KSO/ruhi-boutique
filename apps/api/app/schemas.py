@@ -91,6 +91,32 @@ class AnalyticsHit(BaseModel):
     path: str = Field(default="home", max_length=64)
 
 
+class CollectionPieceOut(BaseModel):
+    id: int
+    title: str
+    title_te: str
+    body: str
+    body_te: str
+    category: str
+    kind: str
+    published: str
+    sort_order: int
+    image_url: str
+    created_at: datetime
+    updated_at: datetime
+
+
+class CollectionPieceUpdate(BaseModel):
+    title: str | None = Field(default=None, min_length=2, max_length=160)
+    title_te: str | None = Field(default=None, max_length=160)
+    body: str | None = Field(default=None, max_length=500)
+    body_te: str | None = Field(default=None, max_length=500)
+    category: str | None = Field(default=None, max_length=64)
+    kind: str | None = Field(default=None, max_length=32)
+    published: str | None = Field(default=None, max_length=16)
+    sort_order: int | None = None
+
+
 def redact_appointment(row: AppointmentOut | object) -> AppointmentOut:
     data = AppointmentOut.model_validate(row)
     return data.model_copy(

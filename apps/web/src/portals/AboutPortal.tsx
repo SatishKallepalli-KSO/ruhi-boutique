@@ -18,7 +18,7 @@ export function AboutPortal({ lang, tx }: Props) {
         </div>
       </div>
       <div className="about-layout">
-        <div className="about-card">
+        <div className="about-copy">
           <dl className="about-facts">
             <div>
               <dt>{tx('aboutOwnerLabel')}</dt>
@@ -64,15 +64,18 @@ export function AboutPortal({ lang, tx }: Props) {
             </a>
           </div>
         </div>
-        <div className="about-map">
-          <p className="about-map-label">{tx('aboutMapTitle')}</p>
-          <iframe
-            title={tx('aboutMapTitle')}
-            src={business.mapsEmbedUrl}
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            allowFullScreen
-          />
+        <div className="about-visuals">
+          <img className="about-photo" src="/gallery-saree.jpg" alt="" loading="lazy" />
+          <div className="about-map">
+            <p className="about-map-label">{tx('aboutMapTitle')}</p>
+            <iframe
+              title={tx('aboutMapTitle')}
+              src={business.mapsEmbedUrl}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
+          </div>
         </div>
       </div>
     </section>

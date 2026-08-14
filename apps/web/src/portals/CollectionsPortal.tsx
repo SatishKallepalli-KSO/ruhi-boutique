@@ -9,20 +9,25 @@ type Props = {
 
 export function CollectionsPortal({ lang, tx, onBook, onStitch }: Props) {
   return (
-    <section className="portal">
-      <div className="section-head">
+    <section className="portal collections-portal">
+      <div className="section-head section-head-premium">
         <h2>{tx('collectionsTitle')}</h2>
         <p>{tx('collectionsIntro')}</p>
       </div>
-      <div className="why-grid">
+      <div className="collections-stack">
         {collections.map((item) => (
-          <article key={item.id} className="why-card">
-            <h3>{item[lang].title}</h3>
-            <p>{item[lang].body}</p>
+          <article key={item.id} className="collection-band">
+            <div className="collection-band-media">
+              <img src={item.image} alt="" loading="lazy" decoding="async" />
+            </div>
+            <div className="collection-band-copy">
+              <h3>{item[lang].title}</h3>
+              <p>{item[lang].body}</p>
+            </div>
           </article>
         ))}
       </div>
-      <div className="hero-actions" style={{ marginTop: '1.5rem' }}>
+      <div className="section-cta-row">
         <button type="button" className="btn btn-primary" onClick={onBook}>
           {tx('bookNow')}
         </button>

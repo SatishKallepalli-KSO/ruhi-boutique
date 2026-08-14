@@ -1,17 +1,18 @@
 :root {
-  --ink: #2a1520;
-  --ink-soft: #7a5a66;
-  --paper: #faf4f6;
-  --paper-soft: #f3e6eb;
+  --ink: #121212;
+  --ink-soft: #5c5c5c;
+  --paper: #f6f6f4;
+  --paper-soft: #ecece8;
   --surface: #ffffff;
-  --accent: #b84a6e;
-  --accent-deep: #8f3554;
-  --warm: #d4a574;
-  --warm-deep: #b8844f;
-  --brand: #5c1f3a;
-  --line: rgba(42, 21, 32, 0.1);
+  --accent: #f5c518;
+  --accent-deep: #d4a50a;
+  --warm: #f5c518;
+  --warm-deep: #c9a00e;
+  --brand: #0a0a0a;
+  --line: rgba(10, 10, 10, 0.1);
   --max: 1180px;
   --font-display: 'Sora', 'Noto Sans Telugu', sans-serif;
+  --font-script: 'Great Vibes', 'Sora', cursive;
   --font-body: 'Figtree', 'Noto Sans Telugu', sans-serif;
 }
 
@@ -26,7 +27,7 @@ html {
 }
 
 ::selection {
-  background: rgba(184, 74, 110, 0.25);
+  background: rgba(245, 197, 24, 0.35);
   color: var(--brand);
 }
 
@@ -38,8 +39,8 @@ body {
   font-size: 1.05rem;
   line-height: 1.6;
   background:
-    radial-gradient(ellipse 70% 45% at 0% 0%, rgba(184, 74, 110, 0.10), transparent 55%),
-    linear-gradient(180deg, #fff8fa 0%, #faf4f6 55%, #f7f0f3 100%);
+    radial-gradient(ellipse 70% 45% at 0% 0%, rgba(245, 197, 24, 0.12), transparent 55%),
+    linear-gradient(180deg, #fafaf8 0%, #f6f6f4 55%, #f0f0ec 100%);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -82,13 +83,13 @@ a:hover {
 }
 
 .topbar-banner a {
-  color: #f0c4a8;
+  color: #f5c518;
   text-decoration: none;
   font-weight: 750;
 }
 
 .topbar-banner a:hover {
-  color: #f7d9c2;
+  color: #ffe566;
 }
 
 .local-now {
@@ -100,12 +101,12 @@ a:hover {
   font-size: 0.82rem;
   font-weight: 650;
   letter-spacing: 0.02em;
-  color: #f0d8e2;
+  color: #e8e8e8;
   white-space: nowrap;
 }
 
 .local-now-place {
-  color: #f0c4a8;
+  color: #f5c518;
   font-weight: 750;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -145,11 +146,12 @@ a:hover {
 
 .nav-brand strong {
   display: block;
-  font-family: var(--font-display);
-  font-size: 1.12rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
+  font-family: var(--font-script);
+  font-size: 1.55rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.05;
+  color: var(--brand);
 }
 
 .nav-brand small {
@@ -162,12 +164,13 @@ a:hover {
 }
 
 .nav-mark {
-  width: 2.55rem;
-  height: 2.55rem;
+  width: 3rem;
+  height: 3rem;
   flex-shrink: 0;
   display: block;
-  border-radius: 0.6rem;
-  box-shadow: 0 6px 16px rgba(11, 42, 74, 0.18);
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
 }
 
 .nav-links {
@@ -432,7 +435,7 @@ main > .admin-portal {
 }
 
 .hero-copy-on-media .hero-kicker {
-  color: #f0c4a8;
+  color: #f5c518;
   letter-spacing: 0.16em;
 }
 
@@ -463,7 +466,7 @@ main > .admin-portal {
 }
 
 .hero-copy-on-media .hero-tagline {
-  color: #f0d8e2;
+  color: #e8e8e8;
   max-width: 40ch;
   line-height: 1.55;
 }
@@ -645,7 +648,7 @@ main > .admin-portal {
   font-family: var(--font-display);
   font-size: 0.95rem;
   font-weight: 800;
-  color: #f0c4a8;
+  color: #f5c518;
   letter-spacing: 0.04em;
 }
 
@@ -1027,12 +1030,12 @@ main > .admin-portal {
 }
 
 .about-seal {
-  width: 4.25rem;
-  height: 4.25rem;
+  width: 5.5rem;
+  height: 5.5rem;
   flex-shrink: 0;
-  border-radius: 0.95rem;
+  border-radius: 50%;
   object-fit: cover;
-  box-shadow: 0 10px 24px rgba(11, 42, 74, 0.16);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
 }
 
 .section-head h2 {
@@ -1325,7 +1328,7 @@ main > .admin-portal {
 
 .fleet-kicker {
   margin: 0 0 0.5rem;
-  color: #f0c4a8;
+  color: #f5c518;
   font-size: 0.82rem;
   font-weight: 750;
   letter-spacing: 0.08em;
@@ -1444,13 +1447,13 @@ main > .admin-portal {
 }
 
 .routes-node.hub .routes-label {
-  fill: #f0c4a8;
+  fill: #f5c518;
   font-size: 15px;
   font-weight: 800;
 }
 
 .routes-node.major .routes-label {
-  fill: #f7d9c2;
+  fill: #ffe566;
   font-size: 13px;
   font-weight: 750;
 }
@@ -2083,12 +2086,12 @@ main > .admin-portal {
   background:
     linear-gradient(160deg, rgba(239, 139, 46, 0.12), transparent 55%),
     #5c1f3a;
-  color: #f0d8e2;
+  color: #e8e8e8;
 }
 
 .form-aside-kicker {
   margin: 0 0 0.45rem;
-  color: #f0c4a8;
+  color: #f5c518;
   font-size: 0.78rem;
   font-weight: 750;
   letter-spacing: 0.08em;
@@ -2688,10 +2691,11 @@ button.data-card.active,
 }
 
 .footer-mark {
-  width: 2.6rem;
-  height: 2.6rem;
+  width: 3.1rem;
+  height: 3.1rem;
   flex-shrink: 0;
-  border-radius: 0.65rem;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .footer-brand strong {
@@ -2714,7 +2718,7 @@ button.data-card.active,
 }
 
 .footer a {
-  color: #f0c4a8;
+  color: #f5c518;
   text-decoration: none;
 }
 
@@ -2728,7 +2732,7 @@ button.data-card.active,
   appearance: none;
   border: 0;
   background: transparent;
-  color: #f0c4a8;
+  color: #f5c518;
   font: inherit;
   padding: 0;
   cursor: pointer;
@@ -2848,8 +2852,8 @@ button.data-card.active,
   }
 
   .nav-mark {
-    width: 2.25rem;
-    height: 2.25rem;
+    width: 2.65rem;
+    height: 2.65rem;
   }
 
   .nav-menu-toggle {

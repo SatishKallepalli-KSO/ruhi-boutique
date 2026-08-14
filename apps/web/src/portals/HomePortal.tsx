@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import type { Stats } from '../api'
+import { CalmAmbience } from '../components/CalmAmbience'
 import { ElephantMotif } from '../components/ElephantMotif'
 import { Reveal } from '../components/Reveal'
 import {
@@ -49,16 +50,20 @@ export function HomePortal({ lang, tx, stats, setPortal }: Props) {
 
   return (
     <>
-      <section className="hero hero-scenic hero-luxe" aria-label="Ruhi Trends">
+      <section className="hero hero-scenic hero-luxe hero-wide" aria-label="Ruhi Trends">
         <div className="hero-scenic-bg hero-kenburns" aria-hidden="true">
           <img src="/motif-elephant-saree.jpg" alt="" fetchPriority="high" decoding="async" />
         </div>
         <div className="hero-scenic-shade hero-luxe-shade" aria-hidden="true" />
         <div className="hero-film" aria-hidden="true" />
+        <p className="hero-shloka" lang="sa">
+          {tx('heroShloka')}
+        </p>
         <div className="hero-copy hero-copy-on-media hero-luxe-copy">
           <p className="hero-eyebrow">{tx('heroKicker')}</p>
           <h1 className="hero-name">{tx('heroBrand')}</h1>
           <p className="hero-store">{business.boutiqueName}</p>
+          <p className="hero-shloka-meaning">{tx('heroShlokaMeaning')}</p>
           <p className="hero-tagline">{tx('heroTagline')}</p>
           <div className="hero-actions">
             <button type="button" className="btn btn-gold" onClick={() => setPortal('book')}>
@@ -69,6 +74,7 @@ export function HomePortal({ lang, tx, stats, setPortal }: Props) {
             </a>
           </div>
         </div>
+        <CalmAmbience tx={tx} />
       </section>
 
       <Reveal as="section" className="section motif-signature">

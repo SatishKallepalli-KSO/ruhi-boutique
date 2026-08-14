@@ -4017,13 +4017,26 @@ button.data-card.active,
 }
 
 .hero-luxe {
-  min-height: min(94vh, 920px);
+  min-height: min(96vh, 980px);
+}
+
+.hero-wide.hero-luxe {
+  min-height: min(100vh, 1080px);
+  align-items: end;
+}
+
+.hero-wide .hero-scenic-bg img {
+  object-fit: cover;
+  object-position: center 42%;
+  width: 100%;
+  height: 100%;
+  transform: scale(1.02);
 }
 
 .hero-luxe-shade {
   background:
-    linear-gradient(105deg, rgba(20, 14, 8, 0.42) 0%, rgba(20, 14, 8, 0.18) 48%, rgba(20, 14, 8, 0.08) 100%),
-    linear-gradient(180deg, rgba(20, 14, 8, 0.08), rgba(20, 14, 8, 0.28));
+    linear-gradient(180deg, rgba(18, 12, 6, 0.08) 0%, rgba(18, 12, 6, 0.12) 45%, rgba(18, 12, 6, 0.58) 100%),
+    linear-gradient(90deg, rgba(18, 12, 6, 0.28) 0%, rgba(18, 12, 6, 0.08) 42%, transparent 70%);
 }
 
 .hero-film {
@@ -5776,5 +5789,116 @@ button.data-card.active,
   .nav-brand-text strong,
   .nav-brand strong {
     font-size: 1.02rem;
+  }
+}
+
+
+/* —— Wide hero + Ganapati calm accents —— */
+.hero-shloka {
+  position: absolute;
+  z-index: 3;
+  top: clamp(1.25rem, 4vh, 2.5rem);
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  max-width: min(92vw, 36rem);
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 2.4vw, 1.45rem);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: rgba(255, 248, 230, 0.92);
+  text-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+}
+
+.hero-shloka-meaning {
+  margin: 0 0 0.85rem;
+  max-width: 28rem;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: rgba(255, 245, 220, 0.82);
+  font-style: italic;
+}
+
+.hero-wide .hero-luxe-copy {
+  max-width: min(34rem, 92vw);
+  padding-block: clamp(2.5rem, 8vh, 5rem);
+  padding-bottom: clamp(2rem, 6vh, 3.5rem);
+}
+
+.calm-ambience {
+  position: absolute;
+  z-index: 4;
+  right: max(1rem, calc((100% - var(--max)) / 2));
+  bottom: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  appearance: none;
+  border: 1px solid rgba(243, 226, 176, 0.45);
+  background: rgba(10, 10, 10, 0.42);
+  color: #f7f0dc;
+  backdrop-filter: blur(10px);
+  padding: 0.55rem 0.85rem;
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.calm-ambience span {
+  font-size: 1rem;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+.calm-ambience em {
+  font-style: normal;
+}
+
+.calm-ambience:hover,
+.calm-ambience.is-playing {
+  background: rgba(10, 10, 10, 0.62);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+@media (max-width: 720px) {
+  .hero-wide.hero-luxe {
+    min-height: min(92vh, 760px);
+  }
+
+  .hero-wide .hero-scenic-bg img {
+    object-position: center 38%;
+  }
+
+  .hero-shloka {
+    top: 1rem;
+    font-size: 0.98rem;
+    letter-spacing: 0.1em;
+  }
+
+  .hero-shloka-meaning {
+    font-size: 0.86rem;
+  }
+
+  .calm-ambience {
+    right: 1rem;
+    bottom: 1rem;
+    padding: 0.5rem 0.7rem;
+  }
+
+  .calm-ambience em {
+    display: none;
+  }
+
+  .hero-luxe-shade {
+    background:
+      linear-gradient(180deg, rgba(18, 12, 6, 0.12) 0%, rgba(18, 12, 6, 0.18) 42%, rgba(18, 12, 6, 0.68) 100%),
+      linear-gradient(90deg, rgba(18, 12, 6, 0.32) 0%, rgba(18, 12, 6, 0.1) 55%, transparent 78%) !important;
   }
 }

@@ -105,9 +105,6 @@ export function HomePortal({ lang, tx, stats, setPortal }: Props) {
               <ElephantMotif className="motif-rail-icon" />
               <span />
             </div>
-            <button type="button" className="btn btn-ink" onClick={() => setPortal('collections')}>
-              {tx('motifCta')}
-            </button>
           </div>
         </div>
       </Reveal>

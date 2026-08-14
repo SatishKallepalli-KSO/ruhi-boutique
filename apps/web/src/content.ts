@@ -417,7 +417,6 @@ const dict = {
     motifTitle: 'Elephant & silk',
     motifBody:
       'The elephant is our house mark — auspicious, graceful, and rooted in tradition. Draped with saree silk, it becomes the quiet symbol of Ruhi Trends: craft, celebration, and care.',
-    motifCta: 'Explore sarees',
   },
   te: {
     topStatsFallback: 'డిజైనర్ బూటిక్ · కూకట్‌పల్లి',
@@ -667,7 +666,6 @@ const dict = {
     motifTitle: 'ఏనుగు & సిల్క్',
     motifBody:
       'ఏనుగు మా హౌస్ మార్క్ — శుభం, సొగసు, సంప్రదాయం. చీర సిల్క్‌తో కలిసి అది రూహీ ట్రెండ్స్ చిహ్నం: క్రాఫ్ట్, వేడుక, జాగ్రత్త.',
-    motifCta: 'చీరలు చూడండి',
   },
 } as const
 

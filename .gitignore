@@ -1,0 +1,17 @@
+node_modules
+dist
+.venv
+__pycache__
+*.pyc
+.env
+.env.local
+.DS_Store
+*.local
+.vite
+coverage
+apps/api/data/
+apps/api/static/
+apps/api/tests/_pytest_ruhi.db
+backups/
+*.sql
+*.sql.gz

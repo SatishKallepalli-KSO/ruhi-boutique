@@ -1,0 +1,21 @@
+{
+  "name": "ruhi-boutique",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Ruhi's Boutique — Kukatpally fashion boutique site",
+  "workspaces": [
+    "apps/web"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=@ruhi-boutique/web",
+    "dev:web": "npm run dev --workspace=@ruhi-boutique/web",
+    "build": "npm run build --workspace=@ruhi-boutique/web",
+    "preview": "npm run preview --workspace=@ruhi-boutique/web",
+    "lint": "npm run lint --workspace=@ruhi-boutique/web",
+    "typecheck": "npm run build --workspace=@ruhi-boutique/web",
+    "test:api": "cd apps/api && python3 -m pytest -q"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import type { Stats } from '../api'
 import { ElephantMotif } from '../components/ElephantMotif'
-import { OpenBadge } from '../components/OpenBadge'
 import { Reveal } from '../components/Reveal'
 import {
   atelierServices,
@@ -71,21 +70,6 @@ export function HomePortal({ lang, tx, stats, setPortal }: Props) {
             <a className="btn btn-ghost-light" href={`tel:${business.phone}`}>
               {tx('callNow')}
             </a>
-          </div>
-        </div>
-      </section>
-
-      <section className="luxe-bar" aria-label={tx('atmosphereLabel')}>
-        <div className="luxe-bar-inner">
-          <OpenBadge tx={tx} />
-          <p className="luxe-bar-body">{tx('atmosphereBody')}</p>
-          <div className="luxe-bar-actions">
-            <a href={waHref(lang)} target="_blank" rel="noreferrer">
-              {tx('whatsapp')}
-            </a>
-            <button type="button" onClick={() => setPortal('about')}>
-              {tx('ctaDirections')}
-            </button>
           </div>
         </div>
       </section>

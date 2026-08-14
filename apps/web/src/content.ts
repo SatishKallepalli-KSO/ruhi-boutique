@@ -186,7 +186,7 @@ const dict = {
     heroBrand: 'Ruhi Trends',
     heroSub: 'Custom stitching & designer ethnic wear',
     heroTagline: 'Couture ethnic wear — silk, stitch, and occasion pieces finished with quiet care in Kukatpally.',
-    ctaQuote: 'Arrange a private visit',
+    ctaQuote: 'Reserve a fitting',
     galleryTitle: 'The atelier',
     galleryIntro: 'Where fabric meets finish — saree drapes, bridal fittings, and custom stitch.',
     lookbookTitle: 'Collections',

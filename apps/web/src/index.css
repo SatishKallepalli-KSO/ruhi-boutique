@@ -5421,3 +5421,150 @@ button.data-card.active,
     letter-spacing: 0.14em;
   }
 }
+
+
+/* —— Elephant + saree signature motif —— */
+.elephant-motif {
+  width: 4.5rem;
+  height: auto;
+  color: var(--accent);
+}
+
+.hero-elephant {
+  position: absolute;
+  z-index: 2;
+  width: min(18vw, 9rem);
+  opacity: 0.28;
+  color: #f3e2b0;
+  pointer-events: none;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.2));
+}
+
+.hero-elephant-left {
+  left: max(1rem, calc((100% - var(--max)) / 2 - 0.5rem));
+  bottom: 12%;
+  animation: motif-float 7s ease-in-out infinite;
+}
+
+.hero-elephant-right {
+  right: max(1rem, calc((100% - var(--max)) / 2 - 0.5rem));
+  top: 18%;
+  transform: scaleX(-1);
+  animation: motif-float 8.5s ease-in-out infinite reverse;
+}
+
+@keyframes motif-float {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -10px; }
+}
+
+.motif-signature {
+  padding-block: clamp(2.5rem, 6vw, 4rem);
+}
+
+.motif-signature-layout {
+  display: grid;
+  gap: 1.75rem;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding-inline: max(1.25rem, calc((100% - var(--max)) / 2));
+  align-items: center;
+}
+
+.motif-signature-media {
+  position: relative;
+  overflow: hidden;
+  background: #1a140c;
+  min-height: 280px;
+}
+
+.motif-signature-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.motif-signature-icon {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  width: 4.25rem;
+  color: rgba(243, 226, 176, 0.92);
+  background: rgba(10, 10, 10, 0.35);
+  padding: 0.55rem;
+  backdrop-filter: blur(6px);
+}
+
+.motif-signature-copy h2 {
+  margin: 0.25rem 0 0.75rem;
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 4.5vw, 3.2rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+}
+
+.motif-signature-copy > p {
+  margin: 0 0 1.1rem;
+  color: var(--ink-soft);
+  max-width: 34rem;
+}
+
+.motif-saree-rail {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 0.85rem;
+  margin: 0 0 1.35rem;
+  max-width: 16rem;
+}
+
+.motif-saree-rail span {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+
+.motif-rail-icon {
+  width: 2.4rem;
+  color: var(--accent-deep);
+}
+
+@media (min-width: 900px) {
+  .motif-signature-layout {
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 2.5rem;
+  }
+
+  .motif-signature-media {
+    min-height: 420px;
+  }
+
+  .motif-signature-media img {
+    min-height: 420px;
+  }
+}
+
+@media (max-width: 720px) {
+  .hero-elephant {
+    width: 4.5rem;
+    opacity: 0.22;
+  }
+
+  .hero-elephant-left {
+    bottom: 8%;
+  }
+
+  .hero-elephant-right {
+    top: 12%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-elephant-left,
+  .hero-elephant-right {
+    animation: none;
+  }
+}

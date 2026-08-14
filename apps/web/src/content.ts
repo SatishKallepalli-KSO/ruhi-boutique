@@ -413,6 +413,11 @@ const dict = {
     formAsideVisit: 'Private fittings · Same-day confirmation',
     formAsideStitch: 'Blouse to bridal · Measured in-house',
     lightboxClose: 'Close',
+    motifEyebrow: 'Our signature',
+    motifTitle: 'Elephant & silk',
+    motifBody:
+      'The elephant is our house mark — auspicious, graceful, and rooted in tradition. Draped with saree silk, it becomes the quiet symbol of Ruhi Trends: craft, celebration, and care.',
+    motifCta: 'Explore sarees',
   },
   te: {
     topStatsFallback: 'డిజైనర్ బూటిక్ · కూకట్‌పల్లి',
@@ -658,6 +663,11 @@ const dict = {
     formAsideVisit: 'ప్రైవేట్ ఫిట్టింగ్‌లు · అదే రోజు నిర్ధారణ',
     formAsideStitch: 'బ్లౌజ్ నుండి బ్రైడల్ · ఇంట్లో కొలతలు',
     lightboxClose: 'మూసివేయి',
+    motifEyebrow: 'మా సంతకం',
+    motifTitle: 'ఏనుగు & సిల్క్',
+    motifBody:
+      'ఏనుగు మా హౌస్ మార్క్ — శుభం, సొగసు, సంప్రదాయం. చీర సిల్క్‌తో కలిసి అది రూహీ ట్రెండ్స్ చిహ్నం: క్రాఫ్ట్, వేడుక, జాగ్రత్త.',
+    motifCta: 'చీరలు చూడండి',
   },
 } as const
 

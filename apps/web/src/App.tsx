@@ -355,17 +355,6 @@ export default function App() {
 
   return (
     <div className={`site lang-${lang}`}>
-      <div className="topbar">
-        <span className="topbar-banner">
-          <OpenBadge tx={tx} className="topbar-open" />
-          <span className="topbar-sep" aria-hidden="true">
-            ·
-          </span>
-          <PhoneLinks />
-        </span>
-        <LocalNow lang={lang} tx={tx} />
-      </div>
-
       <header className={`nav${navOpen ? ' is-menu-open' : ''}`}>
         <a
           className="nav-brand"
@@ -377,7 +366,7 @@ export default function App() {
         >
           <BrandMark className="nav-mark" />
           <span className="nav-brand-text">
-            <strong>Ruhi Trends</strong>
+            <strong>Ruhi Atelier</strong>
             <small>{business.boutiqueName}</small>
           </span>
         </a>
@@ -549,18 +538,25 @@ export default function App() {
       </main>
 
       <footer className="footer">
+        <div className="footer-status" aria-label="Store status">
+          <span className="footer-status-banner">
+            <OpenBadge tx={tx} className="topbar-open" />
+            <span className="topbar-sep" aria-hidden="true">
+              ·
+            </span>
+            <PhoneLinks />
+          </span>
+          <LocalNow lang={lang} tx={tx} />
+        </div>
         <div className="footer-inner">
           <div className="footer-brand">
             <div className="footer-brand-row">
               <BrandMark className="footer-mark" />
               <span className="footer-brand-text">
-                <strong>Ruhi Trends</strong>
+                <strong>Ruhi Atelier</strong>
                 <em className="footer-store">{business.boutiqueName}</em>
               </span>
             </div>
-            <p>
-              <PhoneLinks />
-            </p>
             <p>{address.line}</p>
             <p className="footer-hours">{tx('hours')}</p>
           </div>

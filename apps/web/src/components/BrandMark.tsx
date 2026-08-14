@@ -4,7 +4,7 @@ type Props = {
 }
 
 /** Original Ruhi boutique seal. */
-export function BrandMark({ className, title = 'Ruhi Trends' }: Props) {
+export function BrandMark({ className, title = 'Ruhi Atelier' }: Props) {
   return (
     <img
       className={className}

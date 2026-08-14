@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import type { Stats } from '../api'
-import { CalmAmbience } from '../components/CalmAmbience'
 import { ElephantMotif } from '../components/ElephantMotif'
 import { Reveal } from '../components/Reveal'
 import {
@@ -52,7 +51,7 @@ export function HomePortal({ lang, tx, stats, setPortal }: Props) {
     <>
       <section className="hero hero-scenic hero-luxe hero-wide" aria-label="Ruhi Trends">
         <div className="hero-scenic-bg hero-kenburns" aria-hidden="true">
-          <img src="/motif-elephant-saree.jpg" alt="" fetchPriority="high" decoding="async" />
+          <img src="/motif-elephant-saree-luxe.jpg" alt="" fetchPriority="high" decoding="async" />
         </div>
         <div className="hero-scenic-shade hero-luxe-shade" aria-hidden="true" />
         <div className="hero-film" aria-hidden="true" />
@@ -70,7 +69,6 @@ export function HomePortal({ lang, tx, stats, setPortal }: Props) {
             </a>
           </div>
         </div>
-        <CalmAmbience tx={tx} />
       </section>
 
       <Reveal as="section" className="section motif-signature">

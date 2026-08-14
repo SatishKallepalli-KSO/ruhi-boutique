@@ -184,7 +184,7 @@ const dict = {
     heroKicker: 'KPHB 7th Phase · Kukatpally',
     heroBrand: 'Ruhi Trends',
     heroSub: 'Custom stitching & designer ethnic wear',
-    heroTagline: 'Couture ethnic wear — silk, stitch, and occasion pieces finished with quiet care in Kukatpally.',
+    heroTagline: 'Silk, stitch and occasion couture. Finished with quiet care in Kukatpally, Hyderabad.',
     ctaQuote: 'Reserve a fitting',
     galleryTitle: 'The atelier',
     galleryIntro: 'Where fabric meets finish — saree drapes, bridal fittings, and custom stitch.',

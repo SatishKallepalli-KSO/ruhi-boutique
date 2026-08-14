@@ -5876,11 +5876,12 @@ button.data-card.active,
   }
 
   .hero-shloka {
-    top: 42%;
-    left: 55%;
-    max-width: 48vw;
-    font-size: 0.55rem;
-    letter-spacing: 0.16em;
+    top: 40%;
+    left: 54%;
+    max-width: 56vw;
+    font-size: 0.5rem;
+    letter-spacing: 0.08em;
+    gap: 0.2rem;
   }
 
   .calm-ambience {

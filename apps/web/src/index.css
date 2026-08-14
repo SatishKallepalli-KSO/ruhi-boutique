@@ -1,19 +1,19 @@
 :root {
-  --ink: #121212;
-  --ink-soft: #5c5c5c;
-  --paper: #f6f6f4;
-  --paper-soft: #ecece8;
-  --surface: #ffffff;
-  --accent: #f5c518;
-  --accent-deep: #d4a50a;
-  --warm: #f5c518;
-  --warm-deep: #c9a00e;
+  --ink: #141210;
+  --ink-soft: #6a645c;
+  --paper: #f7f4ef;
+  --paper-soft: #ebe6de;
+  --surface: #fffcf7;
+  --accent: #c4a35a;
+  --accent-deep: #a8863f;
+  --warm: #c4a35a;
+  --warm-deep: #9a7a38;
   --brand: #0a0a0a;
-  --line: rgba(10, 10, 10, 0.1);
+  --line: rgba(20, 18, 16, 0.12);
   --max: 1180px;
-  --font-display: 'Cormorant Garamond', 'Sora', 'Noto Sans Telugu', serif;
-  --font-script: 'Great Vibes', 'Cormorant Garamond', cursive;
-  --font-body: 'Figtree', 'Noto Sans Telugu', sans-serif;
+  --font-display: 'Cormorant Garamond', 'Noto Sans Telugu', serif;
+  --font-script: 'Cormorant Garamond', 'Noto Sans Telugu', serif;
+  --font-body: 'Manrope', 'Noto Sans Telugu', sans-serif;
 }
 
 *,
@@ -27,7 +27,7 @@ html {
 }
 
 ::selection {
-  background: rgba(245, 197, 24, 0.35);
+  background: rgba(196, 163, 90, 0.35);
   color: var(--brand);
 }
 
@@ -39,8 +39,8 @@ body {
   font-size: 1.05rem;
   line-height: 1.6;
   background:
-    radial-gradient(ellipse 55% 40% at 100% 0%, rgba(245, 197, 24, 0.10), transparent 50%),
-    linear-gradient(180deg, #fbfbf8 0%, #f3f1ec 45%, #efece6 100%);
+    radial-gradient(ellipse 50% 36% at 100% 0%, rgba(196, 163, 90, 0.08), transparent 55%),
+    linear-gradient(180deg, #faf7f2 0%, #f3efe8 50%, #ebe6de 100%);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -130,11 +130,12 @@ a:hover {
   width: 100%;
   max-width: none;
   margin: 0;
-  padding: 0.85rem max(1.25rem, calc((100% - var(--max)) / 2));
-  background: rgba(255, 255, 255, 0.94);
-  border-bottom: 1px solid var(--line);
+  padding: 0.95rem max(1.25rem, calc((100% - var(--max)) / 2));
+  background: rgba(10, 10, 10, 0.94);
+  border-bottom: 1px solid rgba(196, 163, 90, 0.22);
   backdrop-filter: blur(18px);
   box-shadow: none;
+  color: #f7f4ef;
 }
 
 .nav-brand {
@@ -142,24 +143,26 @@ a:hover {
   align-items: center;
   gap: 0.7rem;
   text-decoration: none;
+  color: inherit;
 }
 
 .nav-brand strong {
   display: block;
-  font-family: var(--font-script);
+  font-family: var(--font-display);
   font-size: 1.55rem;
-  font-weight: 400;
-  letter-spacing: 0.01em;
+  font-weight: 500;
+  letter-spacing: 0.08em;
   line-height: 1.05;
-  color: var(--brand);
+  text-transform: uppercase;
+  color: #f7f4ef;
 }
 
 .nav-brand small {
   display: block;
-  color: var(--ink-soft);
-  font-size: 0.72rem;
-  font-weight: 650;
-  letter-spacing: 0.04em;
+  color: rgba(247, 244, 239, 0.55);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 
@@ -175,29 +178,30 @@ a:hover {
 
 .nav-links {
   display: none;
-  gap: 0.35rem;
+  gap: 0.15rem;
 }
 
 .nav-links button {
   appearance: none;
   border: 0;
   background: transparent;
-  color: var(--ink);
+  color: rgba(247, 244, 239, 0.72);
   font: inherit;
-  font-size: 0.84rem;
-  font-weight: 650;
-  letter-spacing: 0.04em;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   cursor: pointer;
-  padding: 0.45rem 0.55rem;
+  padding: 0.5rem 0.65rem;
   border-radius: 0;
-  border-bottom: 2px solid transparent;
+  border-bottom: 1px solid transparent;
 }
 
 .nav-links button:hover,
 .nav-links button.active {
   background: transparent;
-  color: var(--brand);
-  border-bottom-color: var(--warm);
+  color: #f7f4ef;
+  border-bottom-color: var(--accent);
 }
 
 .nav-end {
@@ -209,12 +213,12 @@ a:hover {
 .nav-menu-toggle {
   display: none;
   appearance: none;
-  border: 1px solid var(--line);
-  background: #fff;
-  color: var(--brand);
+  border: 1px solid rgba(247, 244, 239, 0.28);
+  background: transparent;
+  color: #f7f4ef;
   width: 2.75rem;
   height: 2.75rem;
-  border-radius: 0.55rem;
+  border-radius: 0;
   padding: 0;
   cursor: pointer;
   align-items: center;
@@ -226,8 +230,8 @@ a:hover {
 .nav-menu-toggle span {
   display: block;
   width: 1.15rem;
-  height: 2px;
-  border-radius: 99px;
+  height: 1.5px;
+  border-radius: 0;
   background: currentColor;
   transition: transform 160ms ease, opacity 160ms ease;
 }
@@ -247,26 +251,28 @@ a:hover {
 .lang-switch {
   display: inline-flex;
   padding: 0.12rem;
-  border-radius: 999px;
-  background: #f1f1f1;
+  border-radius: 0;
+  background: rgba(247, 244, 239, 0.08);
+  border: 1px solid rgba(247, 244, 239, 0.18);
 }
 
 .lang-switch button {
   appearance: none;
   border: 0;
   background: transparent;
-  color: #555;
+  color: rgba(247, 244, 239, 0.65);
   font: inherit;
-  font-size: 0.78rem;
-  font-weight: 750;
-  padding: 0.4rem 0.7rem;
-  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.1em;
+  padding: 0.4rem 0.65rem;
+  border-radius: 0;
   cursor: pointer;
 }
 
 .lang-switch button.active {
-  background: var(--brand);
-  color: #fff;
+  background: var(--accent);
+  color: #0a0a0a;
 }
 
 .nav-cta,
@@ -274,12 +280,13 @@ a:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 0.5rem;
-  padding: 0.8rem 1.3rem;
+  border-radius: 0;
+  padding: 0.85rem 1.4rem;
   font: inherit;
-  font-size: 0.9rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
+  font-size: 0.8rem;
+  font-weight: 650;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   text-decoration: none;
   border: 1px solid transparent;
   cursor: pointer;
@@ -288,16 +295,16 @@ a:hover {
 
 .nav-cta,
 .btn-primary {
-  background: var(--warm);
-  color: #1a1208;
-  box-shadow: 0 6px 16px rgba(217, 115, 22, 0.18);
+  background: var(--accent);
+  color: #0a0a0a;
+  box-shadow: none;
 }
 
 .nav-cta:hover,
 .btn-primary:hover {
-  background: var(--warm-deep);
+  background: var(--accent-deep);
   color: #fff;
-  box-shadow: 0 8px 20px rgba(217, 115, 22, 0.22);
+  box-shadow: none;
 }
 
 .btn-ghost {
@@ -3927,21 +3934,25 @@ button.data-card.active,
   align-items: center;
   justify-content: center;
   gap: 0.4rem;
-  border: 1px solid #f5c518;
-  background: linear-gradient(180deg, #ffe566 0%, #f5c518 55%, #d4a50a 100%);
-  color: #111;
-  font-weight: 750;
-  padding: 0.85rem 1.35rem;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: #0a0a0a;
+  font-weight: 650;
+  padding: 0.9rem 1.45rem;
   text-decoration: none;
   cursor: pointer;
-  letter-spacing: 0.01em;
-  transition: transform 0.2s ease, filter 0.2s ease;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
 .btn-gold:hover {
-  filter: brightness(1.05);
+  background: var(--brand);
+  color: var(--accent);
+  border-color: var(--brand);
   transform: translateY(-1px);
-  color: #111;
+  filter: none;
 }
 
 .btn-ink {
@@ -5187,5 +5198,153 @@ button.data-card.active,
 @media (min-width: 900px) {
   .about-head-luxe {
     grid-template-columns: 1.4fr auto;
+  }
+}
+
+
+/* —— Maison brand lockup + premium chrome —— */
+.brand-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.brand-lockup-seal,
+.brand-seal {
+  display: block;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 1px rgba(196, 163, 90, 0.35);
+}
+
+.brand-lockup-text {
+  display: grid;
+  gap: 0.12rem;
+  min-width: 0;
+}
+
+.brand-lockup-text strong {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.35rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1;
+  color: #f7f4ef;
+}
+
+.brand-lockup-text small {
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(196, 163, 90, 0.9);
+}
+
+.brand-lockup-inverted .brand-lockup-text strong {
+  color: #f7f4ef;
+}
+
+.brand-lockup-hero {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.35rem;
+}
+
+.brand-lockup-hero .brand-lockup-seal {
+  width: 5.5rem;
+  height: 5.5rem;
+  box-shadow:
+    0 0 0 1px rgba(196, 163, 90, 0.45),
+    0 18px 50px rgba(0, 0, 0, 0.35);
+}
+
+.brand-lockup-hero .brand-lockup-text strong {
+  font-size: clamp(2.6rem, 7vw, 4.6rem);
+  letter-spacing: 0.12em;
+  color: #fff;
+  text-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+}
+
+.brand-lockup-hero .brand-lockup-text small {
+  font-size: 0.78rem;
+  letter-spacing: 0.28em;
+  color: rgba(245, 230, 190, 0.9);
+}
+
+.hero-brand-lockup {
+  animation: fade-up 0.85s ease both;
+}
+
+.hero-eyebrow {
+  color: var(--accent) !important;
+}
+
+.hero-luxe .hero-tagline {
+  max-width: 28rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.footer {
+  background: #080808;
+  color: rgba(247, 244, 239, 0.72);
+  border-top: 1px solid rgba(196, 163, 90, 0.2);
+}
+
+.footer-brand-lockup {
+  margin-bottom: 1rem;
+}
+
+.footer a {
+  color: var(--accent);
+}
+
+.topbar-banner a {
+  color: var(--accent);
+}
+
+.topbar-banner a:hover {
+  color: #e2c88a;
+}
+
+.local-now-place {
+  color: var(--accent);
+}
+
+.luxe-bar-kicker,
+.service-atelier-eta,
+.bridal-step-num,
+.bridal-steps em {
+  color: var(--accent) !important;
+}
+
+.section-eyebrow {
+  color: var(--accent-deep);
+}
+
+.open-badge {
+  border-color: rgba(196, 163, 90, 0.4);
+}
+
+@media (max-width: 900px) {
+  .nav.is-menu-open .nav-links {
+    background: #0a0a0a;
+    border: 1px solid rgba(196, 163, 90, 0.2);
+  }
+
+  .brand-lockup-text strong {
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+  }
+
+  .brand-lockup-text small {
+    letter-spacing: 0.14em;
   }
 }

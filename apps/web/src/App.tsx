@@ -146,6 +146,23 @@ export default function App() {
     trackPageView(portal)
   }, [portal])
 
+  useEffect(() => {
+    // After the portal paints, jump to the form/page top (esp. on mobile).
+    const jump = () => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+      document.documentElement.scrollTop = 0
+      document.body.scrollTop = 0
+      document.getElementById('top')?.scrollIntoView({ behavior: 'auto', block: 'start' })
+    }
+    jump()
+    const frame = window.requestAnimationFrame(jump)
+    const timer = window.setTimeout(jump, 50)
+    return () => {
+      window.cancelAnimationFrame(frame)
+      window.clearTimeout(timer)
+    }
+  }, [portal])
+
   async function refreshPublic() {
     try {
       const next = await fetchStats()
@@ -198,7 +215,6 @@ export default function App() {
     } else if (window.location.hash !== hash) {
       window.location.hash = hash
     }
-    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   function goBack() {
